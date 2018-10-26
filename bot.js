@@ -88,27 +88,14 @@ bot.on('message', (message) =>
         update.checkUpdate(message, args);
         break;
       case 'note':
-        //note.handleNote(message, args);
+        note.handleNote(message, args);
         break;
       case 'clearnote':
-        note.clearNote(message, args);
+        if(message.author.id === config.plannerId)
+        {
+          note.clearNote(message, args);
+        }
         break;
-      case 'write':
-        fs.writeFile('/data/test', args.join(" "), function(err) {
-          if(err) {
-            return logger.info(err);
-          }
-
-          logger.info("The file was saved!");
-        }); 
-        break;
-      case 'read':
-        fs.readFile('/data/test', 'utf8', function(err, data) {  
-          if (err) { logger.error("read failed: " + err); }
-          else { message.channel.send("Le message sauvegardé est : " + data); }
-        });
-        break;
-  
       // Just add any case commands if you want to..
      }
    }

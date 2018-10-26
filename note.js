@@ -48,8 +48,17 @@ module.exports = {
   
   clearNote: function(message, args)
   {
-    fs.writeFile(noteFile, "{}", function(err) {
-      if(err) { message.channel.send('<@' + message.author.id + ">, vous avez tout cassé !"); }
+    var noteFile = '/data/note.json';
+    
+    fs.readFile(noteFile, 'utf8', function(err, data) {  
+      if (err) { return; }
+
+      var jsonData = JSON.parse(data);
+      jsonData[args[0]] = "";
+    
+      fs.writeFile(noteFile, "JSON.stringify(jsonData)", function(err) {
+        if(err) { message.channel.send('<@' + message.author.id + ">, vous avez tout cassé !"); }
+      });
     });
   }
 }
