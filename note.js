@@ -7,7 +7,7 @@ module.exports = {
     var userId = message.member.id;
     var noteFile = '/data/note.json';
     
-    fs.readFile('noteFile', 'utf8', function(err, data) {  
+    fs.readFile(noteFile, 'utf8', function(err, data) {  
       if (err) { 
         logger.error("read failed: " + err); 
         data = "{}";
@@ -34,11 +34,11 @@ module.exports = {
         
         fs.writeFile(noteFile, JSON.stringify(jsonData), function(err) {
           if(err) {
-            logger.info('<@' + message.author.id + ">, vous avez tout cassé !");
+            message.channel.send('<@' + message.author.id + ">, vous avez tout cassé !");
             return;
           }
 
-          logger.info('<@' + message.author.id + ">, j'ai sauvegardé pour vous ce message: " + jsonData[message.member.id]);
+          message.channel.send('<@' + message.author.id + ">, j'ai sauvegardé pour vous ce message: " + jsonData[message.member.id]);
         }); 
       }
     });
