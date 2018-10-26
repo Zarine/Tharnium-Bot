@@ -87,7 +87,7 @@ bot.on('message', (message) =>
         update.checkUpdate(message, args);
         break;
       case 'write':
-        fs.writeFile('/data/test', "Hey there!", function(err) {
+        fs.writeFile('/data/test', args.join(" "), function(err) {
           if(err) {
             return logger.info(err);
           }
@@ -98,7 +98,7 @@ bot.on('message', (message) =>
       case 'read':
         fs.readFile('/data/test', 'utf8', function(err, data) {  
           if (err) { logger.error("read failed: " + err); }
-          else { logger.info("read result : " + data); }
+          else { message.channel.send("Le message sauvegardé est : " + data); }
         });
         break;
   
