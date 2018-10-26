@@ -106,7 +106,7 @@ bot.on('message', (message) =>
       case 'displaycharacter':
         jdr.displayCharacter(message, args);
         break;
-      case 'setName':
+      case 'setname':
         jdr.setName(message, args);
         break;
      }
