@@ -50,6 +50,14 @@ module.exports = {
   {
     var noteFile = '/data/note.json';
     
+    if(args.length === 0)
+    {
+      fs.writeFile(noteFile, "{}", function(err) {
+        if(err) { message.channel.send('<@' + message.author.id + ">, vous avez tout cassé !"); }
+      });
+      return;
+    }
+    
     fs.readFile(noteFile, 'utf8', function(err, data) {  
       if (err) { return; }
 
