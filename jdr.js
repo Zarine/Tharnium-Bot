@@ -59,7 +59,7 @@ module.exports = {
     
     if(args.length !== 2)
     {
-      message.channel.send('<@' + message.author.id + '>, usage est : !addplayer alias @utilisateur");
+      message.channel.send('<@' + message.author.id + '>, usage est : !addplayer alias @utilisateur');
     }
     
     jsonData.playerList[args[0]] = args[1].id;
