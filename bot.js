@@ -96,13 +96,12 @@ bot.on('message', (message) =>
         }); 
         break;
       case 'read':
-        fs.readFile('my-file.txt', 'utf8', function(err, data) {  
+        fs.readFile('/data/test', 'utf8', function(err, data) {  
           if (err) { logger.error("read failed: " + err); }
-          logger.info("read result : " + data);
+          else { logger.info("read result : " + data); }
         });
         break;
-});
-        
+  
       // Just add any case commands if you want to..
      }
    }
