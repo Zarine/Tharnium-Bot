@@ -7,6 +7,7 @@ var des = require('./des');
 var update = require('./update');
 var utils = require('./utils');
 var divers = require('./divers');
+var note = require('./note');
 
 process.setMaxListeners(500);
 
@@ -85,6 +86,9 @@ bot.on('message', (message) =>
         break;
       case 'checkupdate':
         update.checkUpdate(message, args);
+        break;
+      case 'note':
+        note.handleNote(message, args);
         break;
       case 'write':
         fs.writeFile('/data/test', args.join(" "), function(err) {
