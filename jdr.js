@@ -105,5 +105,27 @@ module.exports = {
       var textToSend = '<@' + message.author.id + '>, le personnage se nomme ' + character.name + '. Il est niveau ' + character.level + '.';
       message.channel.send(textToSend);
     }
+  },
+  
+  setName: function(message, args
+  {
+    var jsonData = getData(message);
+    if(jsonData === undefined) { return; }
+    
+    if(args.length === 0)
+    {
+      message.channel.send('<@' + message.author.id + '>, usage est : !setName Nom du Personnage');
+      return;
+    }
+    
+    var id = id = jsonData.playerList[message.member.id];
+    jsonData.characterList[id].name = args.join(' ');
+    
+    fs.writeFile(getFileName(message), JSON.stringify(jsonData), function(err) 
+    {
+      if(err) { message.channel.send('<@' + message.author.id + ">, échec de la mise à jour du nom !"); }
+      else { message.channel.send('<@' + message.author.id + '>, le nom de votre personne est maintenant: ' + jsonData.characterList[id].name); }
+    });
+    logger.info(jsonData);
   }
 }
