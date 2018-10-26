@@ -1,5 +1,6 @@
 var Discord = require('discord.js');
 var logger = require('winston');
+var fs = require('fs');
 
 var config = require('./conf.json');
 var des = require('./des');
@@ -84,6 +85,16 @@ bot.on('message', (message) =>
         break;
       case 'checkupdate':
         update.checkUpdate(message, args);
+        break;
+      case 'test':
+        const testFile = '/data/test';
+        fs.writeFile(testFile, "Hey there!", function(err) {
+            if(err) {
+                return logger.info(err);
+            }
+
+            logger.info("The file was saved!");
+        }); 
         break;
       // Just add any case commands if you want to..
      }
