@@ -92,7 +92,7 @@ module.exports = {
     }
     
     var id;
-    if(args.length === 0) { id = jsonData.playerList[message.member.id]; }
+    if(args.length === 0) { id = message.member.id; }
     else { id = jsonData.playerList[args[0]]; }
     
     if(id === undefined)
@@ -118,7 +118,7 @@ module.exports = {
       return;
     }
     
-    var id = id = jsonData.playerList[message.member.id];
+    var id = message.member.id;
     jsonData.characterList[id].name = args.join(' ');
     
     fs.writeFile(getFileName(message), JSON.stringify(jsonData), function(err) 
