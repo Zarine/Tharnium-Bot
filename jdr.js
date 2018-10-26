@@ -64,7 +64,7 @@ module.exports = {
       return;
     }
     
-    var idMention = message.mentions[0].id
+    var idMention = message.mentions.members.first().id;
     jsonData.playerList[args[0]] = idMention;
     
     if(jsonData.characterList[idMention] === undefined)
