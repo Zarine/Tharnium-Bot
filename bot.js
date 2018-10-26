@@ -30,7 +30,7 @@ bot.on("guildMemberAdd", member =>
   logger.info("Nouveau user : " + member.user.username);
   
   const guild = member.guild;
-  guild.channels.get('505009629466722304').send("Bienvenue au nouveau membre de la communauté : " + member.user);
+  guild.channels.get(config.welcomeChannelId).send("Bienvenue au nouveau membre de la communauté : " + member.user);
   
   var roleToAdd = utils.getRole(guild, 'Nouveau');
   logger.info("Adding role : " + roleToAdd + " which is " + roleToAdd.name + " to member : " + member.user.username);
@@ -52,9 +52,9 @@ bot.on('message', (message) =>
         message.channel.send("Les commandes disponibles sont \n        !lance : permet de lancer des dés. Exemple : !lance 3d7 \n        !time : permet de savoir depuis quand vous êtes sur le serveur \n        !rockiloli : permet de faire plaisir à un modo \n        !pannaautravail : permet de demander à l'autre modo de travailler \n        !tharn : permet de tester quelques rôles (modo, admin...)");
         break;
       case 'planning':
-        if(message.author.id === "174628488538619904")
+        if(message.author.id === config.plannerId)
         {
-          message.guild.channels.get('250906225913495552').fetchMessage("504767553059553301")
+          message.guild.channels.get(config.planningChannelId).fetchMessage(config.planningMessageId)
           .then(calendar => {
             calendar.edit(args.join(' '));
           });

@@ -1,5 +1,6 @@
 var logger = require('winston');
 
+var config = require('./conf.json');
 var utils = require('./utils');
 
 function checkModoOrZarine(member)
@@ -16,12 +17,12 @@ function setNouveauRole(member, args, result)
   var mustUpdate = true;
   const guild = member.guild;
   member.roles.forEach(function(ownedRole) {
-    if(ownedRole.name === 'Compagnon' || ownedRole.name === 'Nouveau') { mustUpdate = false; }
+    if(ownedRole.name === config.usualRoleName || ownedRole.name === config.nouveauRoleName) { mustUpdate = false; }
   });
   
   if(mustUpdate)
   {
-    var roleToAdd = utils.getRole(guild, 'Nouveau');
+    var roleToAdd = utils.getRole(guild, config.nouveauRoleName);
     logger.info("Adding role : " + roleToAdd + " which is " + roleToAdd.name + " to member : " + member.user.username);
     member.addRole(roleToAdd).then( () => { upgradeNouveau(member, args, result); } ).catch(console.error);
     result.push(member.user.username + " n'avait pas de role. Le bon role lui a été donné !");
@@ -31,27 +32,27 @@ function setNouveauRole(member, args, result)
 
 function checkJoinDateLimit(member)
 {
-  var diff = Date.now() - member.joinedTimestamp - (3 * 24 * 60 * 60 * 1000);
+  var diff = Date.now() - member.joinedTimestamp - (config.dayForUsual * 24 * 60 * 60 * 1000);
   if(diff < 0) { return false; }
   return true;
 }
 
 function nouveauToCompagnon(guild, member, result)
 {
-  var compagnon = utils.getRole(guild, 'Compagnon');
+  var compagnon = utils.getRole(guild, config.usualRoleName);
   member.addRole(compagnon).catch(console.error);
   
-  var nouveau = utils.getRole(guild, 'Nouveau');
+  var nouveau = utils.getRole(guild, config.nouveauRoleName);
   member.removeRole(nouveau).catch(console.error);
   
-  result.push(member.user.username + " vient de passer Compagnon !");
+  result.push(member.user.username + " vient de passer " + config.usualRoleName + " !");
 }
 
 function upgradeNouveau(member, args, result)
 {
   const guild = member.guild;
   member.roles.forEach(function(ownedRole) {
-    if(ownedRole.name === 'Nouveau') 
+    if(ownedRole.name === config.nouveauRoleName) 
     {
       if(!checkJoinDateLimit(member)) { logger.info(member.user.username + " est trop jeune sur le serveur pour un changement de role"); }
       else { nouveauToCompagnon(guild, member, result); }
@@ -64,11 +65,11 @@ function checkNouveauRole(member, args, result)
   var hasRole = false;
   member.roles.forEach(function(ownedRole) {
     
-    if(ownedRole.name === 'Nouveau') 
+    if(ownedRole.name === config.nouveauRoleName) 
     {
       hasRole = true;
       var joinDate = new Date(member.joinedTimestamp);
-      var textToAdd = member.user.username + " est toujours un Nouveau. Il est sur le serveur depuis le : " + joinDate.getDate() + "/" + (joinDate.getMonth() + 1 + "/" + joinDate.getFullYear()) ;
+      var textToAdd = member.user.username + " est toujours un " + config.nouveauRoleName + ". Il est sur le serveur depuis le : " + joinDate.getDate() + "/" + (joinDate.getMonth() + 1 + "/" + joinDate.getFullYear()) ;
       result.nouveauUser.push(textToAdd);
       
       if(checkJoinDateLimit(member))
@@ -77,7 +78,7 @@ function checkNouveauRole(member, args, result)
       }
     }
     
-    if(ownedRole.name === 'Compagnon')
+    if(ownedRole.name === config.usualRoleName)
     {
       hasRole = true;
     }      
@@ -130,16 +131,16 @@ module.exports = {
       var messageToSend = "";
       if(result.nouveauUser.length !== 0)
       {
-        messageToSend = "Il y a actuellement les Nouveaux suivant : \n" + result.nouveauUser.join("\n") + "\n Ca fait " + result.nouveauUser.length + " Nouveau\n";
+        messageToSend = "Il y a actuellement les Nouveaux suivant : \n" + result.nouveauUser.join("\n") + "\n Ca fait " + result.nouveauUser.length + " " + config.nouveauRoleName + "\n";
         
       }
       if(result.upgradeUser.length !== 0)
       {
-        messageToSend += "Les utilisateurs suivant peuvent passer automatiquement Compagnon:\n" + result.upgradeUser.join("\n") + "/n";
+        messageToSend += "Les utilisateurs suivant peuvent passer automatiquement " + config.usualRoleName + ":\n" + result.upgradeUser.join("\n") + "/n";
       }
       if(result.missingRole.length !== 0)
       {
-        messageToSend += "Les utilisateurs ne sont ni Nouveau ni Compagnon:\n" + result.missingRole.join("\n");
+        messageToSend += "Les utilisateurs ne sont ni " + config.nouveauRoleName + " ni " + config.usualRoleName + ":\n" + result.missingRole.join("\n");
       }
       message.channel.send(messageToSend);
     });
