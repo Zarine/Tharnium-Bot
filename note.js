@@ -56,7 +56,7 @@ module.exports = {
       var jsonData = JSON.parse(data);
       jsonData[args[0]] = "";
     
-      fs.writeFile(noteFile, "JSON.stringify(jsonData)", function(err) {
+      fs.writeFile(noteFile, JSON.stringify(jsonData), function(err) {
         if(err) { message.channel.send('<@' + message.author.id + ">, vous avez tout cassé !"); }
       });
     });
