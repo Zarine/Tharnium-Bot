@@ -84,7 +84,7 @@ module.exports = {
     
     if(args.length > 1)
     {
-      message.channel.send('<@' + message.author.id + '>, usage est : !displayPlayer [alias]");
+      message.channel.send('<@' + message.author.id + '>, usage est : !displayPlayer [alias]');
       return;
     }
     
@@ -94,7 +94,7 @@ module.exports = {
     
     if(id === undefined)
     {
-      message.channel.send('<@' + message.author.id + '>, cet alias est inconnu !");
+      message.channel.send('<@' + message.author.id + '>, cet alias est inconnu !');
     }
     else
     {
