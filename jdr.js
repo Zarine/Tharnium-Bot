@@ -15,7 +15,7 @@ function getData(message)
     }
     catch(err)
     {  
-      message.channel.send('<@' + message.author.id + '>, le channel ' + message.channel + " n'est pas initialisé.");
+      message.channel.send('<@' + message.author.id + '>, le channel ' + message.channel + " n'est pas initialisé pour le jdr.");
       return undefined;
     }
     
@@ -61,6 +61,7 @@ module.exports = {
     if(args.length !== 2)
     {
       message.channel.send('<@' + message.author.id + '>, usage est : !addplayer alias @utilisateur');
+      return;
     }
     
     jsonData.playerList[args[0]] = args[1].id;
