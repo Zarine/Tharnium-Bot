@@ -15,7 +15,7 @@ module.exports = {
       
       if(args.length === 0)
       {
-        var userNote = jsonData[message.member.id]'
+        var userNote = jsonData[message.member.id];
         if(userNote === undefined)
         {
           message.channel.send('<@' + message.author.id + '>, je ne trouve pas de note pour vous !');
