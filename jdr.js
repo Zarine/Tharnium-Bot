@@ -64,11 +64,12 @@ module.exports = {
       return;
     }
     
-    jsonData.playerList[args[0]] = args[1];
+    var idMention = message.mentions[0].id
+    jsonData.playerList[args[0]] = idMention;
     
-    if(jsonData.characterList[args[1]] === undefined)
+    if(jsonData.characterList[idMention] === undefined)
     {
-      jsonData.characterList[args[1]] = createCharacter();
+      jsonData.characterList[idMention] = createCharacter();
     }
     
     fs.writeFile(getFileName(message), JSON.stringify(jsonData), function(err) 
