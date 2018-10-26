@@ -46,9 +46,9 @@ module.exports = {
     
   },
   
-  clearNote: function(message, args) 
+  clearNote: function(message, args)
   {
     fs.writeFile(noteFile, "{}", function(err) {
-    }
+    });
   }
 }
