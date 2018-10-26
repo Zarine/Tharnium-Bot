@@ -86,16 +86,23 @@ bot.on('message', (message) =>
       case 'checkupdate':
         update.checkUpdate(message, args);
         break;
-      case 'test':
-        const testFile = '/data/test';
-        fs.writeFile(testFile, "Hey there!", function(err) {
-            if(err) {
-                return logger.info(err);
-            }
+      case 'write':
+        fs.writeFile('/data/test', "Hey there!", function(err) {
+          if(err) {
+            return logger.info(err);
+          }
 
-            logger.info("The file was saved!");
+          logger.info("The file was saved!");
         }); 
         break;
+      case 'read':
+        fs.readFile('my-file.txt', 'utf8', function(err, data) {  
+          if (err) { logger.error("read failed: " + err); }
+          logger.info("read result : " + data);
+        });
+        break;
+});
+        
       // Just add any case commands if you want to..
      }
    }
