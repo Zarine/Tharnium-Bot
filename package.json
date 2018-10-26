@@ -1,0 +1,17 @@
+{
+  "name": "Tharnium",
+  "version": "0.1.0",
+  "description": "Bot de la Compagnie de Zarine",
+  "main": "bot.js",
+  "start": "bot.js",
+  "author": "Zarine Tharn",
+  "dependencies": {
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "discord.js": "^11.4.2",
+    "winston": "^3.1.0"
+  },
+  "scripts": {
+    "start": "node bot.js"
+  }
+}
+
