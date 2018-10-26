@@ -107,7 +107,7 @@ module.exports = {
     }
   },
   
-  setName: function(message, args
+  setName: function(message, args)
   {
     var jsonData = getData(message);
     if(jsonData === undefined) { return; }
