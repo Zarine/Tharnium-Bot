@@ -51,7 +51,7 @@ bot.on('message', (message) =>
      
     switch(command) {
       case 'command':
-        message.channel.send("Les commandes disponibles sont \n        !lance : permet de lancer des dés. Exemple : !lance 3d7 \n        !time : permet de savoir depuis quand vous êtes sur le serveur \n        !rockiloli : permet de faire plaisir à un modo \n        !pannaautravail : permet de demander à l'autre modo de travailler \n        !tharn : permet de tester quelques rôles (modo, admin...)");
+        message.channel.send("Les commandes disponibles sont \n        !lance : permet de lancer des dés. Exemple : !lance 3d7 \n        !time : permet de savoir depuis quand vous êtes sur le serveur \n        !rocki : permet de faire plaisir à un modo \n        !panna : permet de demander à l'autre modo de travailler \n        !tharn : permet de tester quelques rôles (modo, admin...)");
         break;
       case 'planning':
         if(message.author.id === config.plannerId)
@@ -65,10 +65,10 @@ bot.on('message', (message) =>
       case 'tharn':
         divers.testMainRole(message);
         break;
-      case 'pannaautravail':
+      case 'panna':
         message.channel.send('Pannaistes retourne bosser ! https://gph.is/1Fbp1e6');
         break;
-      case 'rockiloli':
+      case 'rocki':
         message.channel.send('La loli de Le Rocki ! ' + divers.loliFromRocki());
         break;
       case 'testnotif':
