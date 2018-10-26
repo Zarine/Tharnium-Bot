@@ -1,4 +1,5 @@
 var fs = require('fs');
+var logger = require('winston');
 
 module.exports = {
   handleNote: function(message, args)
