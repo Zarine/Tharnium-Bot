@@ -1,11 +1,12 @@
 var fs = require('fs');
 var logger = require('winston');
+var config = require('./conf.json');
 
 module.exports = {
   handleNote: function(message, args)
   {
     var userId = message.member.id;
-    var noteFile = '/data/note.json';
+    var noteFile = config.baseLocation + 'note.json';
     
     fs.readFile(noteFile, 'utf8', function(err, data) {  
       if (err) { 

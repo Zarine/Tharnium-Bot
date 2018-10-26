@@ -1,9 +1,10 @@
 var fs = require('fs');
 var logger = require('winston');
+var config = require('./conf.json');
 
 function getFileName(message)
 {
-  return ("jdr" + message.channel.id + ".json");
+  return (config.baseLocation + "jdr" + message.channel.id + ".json");
 }
 
 function getData(message)
@@ -14,7 +15,7 @@ function getData(message)
     }
     catch(err)
     {  
-      message.channel.send('<@' + message.author.id + '>, le channel ' + message.channel + " n'est pas initialisé.");
+      message.channel.send('<@' + message.author.id + '>, le channel ' + message.channel + " n'est pas initialisÃ©.");
       return undefined;
     }
     
@@ -47,8 +48,8 @@ module.exports = {
     
     fs.writeFile(getFileName(message), JSON.stringify(gameStatus), function(err) 
     {
-      if(err) { message.channel.send('<@' + message.author.id + ">, échec de l'init !"); }
-      else { message.channel.send('<@' + message.author.id + '>, le channel ' + message.channel + " est prêt pour le jdr"); }
+      if(err) { message.channel.send('<@' + message.author.id + ">, Ã©chec de l'init !"); }
+      else { message.channel.send('<@' + message.author.id + '>, le channel ' + message.channel + " est prÃªt pour le jdr"); }
     });
   },
   
@@ -71,8 +72,8 @@ module.exports = {
     
     fs.writeFile(getFileName(message), JSON.stringify(jsonData), function(err) 
     {
-      if(err) { message.channel.send('<@' + message.author.id + ">, échec de l'init !"); }
-      else { message.channel.send('<@' + message.author.id + '>, le joueur  ' + args[0] + " est bien enregistré pour le jdr"); }
+      if(err) { message.channel.send('<@' + message.author.id + ">, Ã©chec de l'init !"); }
+      else { message.channel.send('<@' + message.author.id + '>, le joueur  ' + args[0] + " est bien enregistrÃ© pour le jdr"); }
     });
     logger.info(jsonData);
   },
