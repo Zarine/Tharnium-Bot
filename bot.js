@@ -8,6 +8,7 @@ var update = require('./update');
 var utils = require('./utils');
 var divers = require('./divers');
 var note = require('./note');
+var jdr = require('./jdr');
 
 process.setMaxListeners(500);
 
@@ -96,7 +97,15 @@ bot.on('message', (message) =>
           note.clearNote(message, args);
         }
         break;
-      // Just add any case commands if you want to..
+      case 'initjdr':
+        jdr.init(message, args);
+        break;
+      case 'addplayer':
+        jdr.addPlayer(message, args);
+        break;
+      case 'displaycharacter':
+        jdr.displayCharacter(message, args);
+        break;
      }
    }
 });
