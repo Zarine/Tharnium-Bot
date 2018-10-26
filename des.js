@@ -4,14 +4,14 @@ module.exports = {
   lanceDes: function(args) {
     const argument = args.shift().toLowerCase().split('d');
     var result = 0;
-    var details = "";
+    var details = [];
     for(i = 0; i < argument[0]; i++)
     {
       var valeur = Math.floor((Math.random() * argument[1]) + 1);
       result += valeur;
-      details = utils.addWithSeparator(details, valeur, ", ");
+      details.push(valeur);
     }
-  var text = "Résultat : " + result + "\n Les dés ont fait : " + details;
+  var text = "Résultat : " + result + "\n Les dés ont fait : " + details.join(", ");
     return text;
   }
 }
