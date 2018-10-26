@@ -25,7 +25,7 @@ module.exports = {
         }
         else
         {
-          message.channel.send('<@' + message.author.id + ">, voici ce que j'ai en memoire venant de vous: " + userNote);
+          message.channel.send('<@' + message.author.id + ">, voici ce que j'ai en memoire venant de vous: \n" + userNote);
         }
       }
       else
@@ -38,7 +38,7 @@ module.exports = {
             return;
           }
 
-          message.channel.send('<@' + message.author.id + ">, j'ai sauvegardé pour vous ce message: " + jsonData[message.member.id]);
+          message.channel.send('<@' + message.author.id + ">, j'ai sauvegardé pour vous ce message: \n" + jsonData[message.member.id]);
         }); 
       }
     });
