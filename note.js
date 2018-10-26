@@ -49,6 +49,7 @@ module.exports = {
   clearNote: function(message, args)
   {
     fs.writeFile(noteFile, "{}", function(err) {
+      if(err) { message.channel.send('<@' + message.author.id + ">, vous avez tout cassé !"); }
     });
   }
 }
