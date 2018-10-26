@@ -88,7 +88,10 @@ bot.on('message', (message) =>
         update.checkUpdate(message, args);
         break;
       case 'note':
-        note.handleNote(message, args);
+        //note.handleNote(message, args);
+        break;
+      case 'clearnote':
+        note.clearNote(message, args);
         break;
       case 'write':
         fs.writeFile('/data/test', args.join(" "), function(err) {
