@@ -110,8 +110,30 @@ bot.on('message', (message) =>
         jdr.setName(message, args);
         break;
       case 'vote':
-        message.channel.send(message.guild.channels.get('506213246739415060').fetchMessage('506214334293213195').reactions);
-        message.channel.send(message.guild.channels.get('506213246739415060').fetchMessage('506214739316047872').reactions);
+        var reactions = [];
+        message.guild.channels.get('506213246739415060').fetchMessage('506214334293213195').reactions.forEach(function(reaction) {
+          reactions.push(reaction);
+        }
+        message.guild.channels.get('506213246739415060').fetchMessage('506214739316047872').reactions.forEach(function(reaction) {
+          reactions.push(reaction);
+        }
+        
+        var result = "";
+        for(var i = 0; i < reactions.length; i++)
+        {
+          var currentReaction = reactions[i];
+          result = result + currentReaction.emoji + " : " + (currentReaction.count - 1) + " vote(s) de: ";
+          var listUser = [];
+          currentReaction.users.forEach(user)
+          {
+            if(user.username !== 'Zarine')
+            {
+              listUser.push(user.username);
+            }
+          }
+          result = result + listUser.join(', ') + '\n';
+        }
+        message.channel.send(result);
         break;
      }
    }
