@@ -109,6 +109,10 @@ bot.on('message', (message) =>
       case 'setname':
         jdr.setName(message, args);
         break;
+      case 'vote':
+        message.channel.send(message.guild.channels.get('506213246739415060').fetchMessage('506214334293213195').reactions);
+        message.channel.send(message.guild.channels.get('506213246739415060').fetchMessage('506214739316047872').reactions);
+        break;
      }
    }
 });
