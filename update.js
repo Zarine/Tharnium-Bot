@@ -136,7 +136,7 @@ module.exports = {
       }
       if(result.upgradeUser.length !== 0)
       {
-        messageToSend += "Les utilisateurs suivant peuvent passer automatiquement " + config.usualRoleName + ":\n" + result.upgradeUser.join("\n") + "/n";
+        messageToSend += "Les utilisateurs suivant peuvent passer automatiquement " + config.usualRoleName + ":\n" + result.upgradeUser.join("\n") + "\n";
       }
       if(result.missingRole.length !== 0)
       {
