@@ -70,7 +70,7 @@ module.exports = {
   loliFromRocki: function()
   {
     return readLoli();
-  }
+  },
   
   addLoli: function(message)
   {
