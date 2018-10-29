@@ -113,10 +113,10 @@ bot.on('message', (message) =>
         var reactions = [];
         message.guild.channels.get('506213246739415060').fetchMessage('506214334293213195').reactions.forEach(function(reaction) {
           reactions.push(reaction);
-        }
+        });
         message.guild.channels.get('506213246739415060').fetchMessage('506214739316047872').reactions.forEach(function(reaction) {
           reactions.push(reaction);
-        }
+        });
         
         var result = "";
         for(var i = 0; i < reactions.length; i++)
@@ -124,13 +124,13 @@ bot.on('message', (message) =>
           var currentReaction = reactions[i];
           result = result + currentReaction.emoji + " : " + (currentReaction.count - 1) + " vote(s) de: ";
           var listUser = [];
-          currentReaction.users.forEach(user)
+          currentReaction.users.forEach(function(user)
           {
             if(user.username !== 'Zarine')
             {
               listUser.push(user.username);
             }
-          }
+          });
           result = result + listUser.join(', ') + '\n';
         }
         message.channel.send(result);
