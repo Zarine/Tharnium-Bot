@@ -11,8 +11,7 @@ function addLoliToFile(message)
   fs.readFile(loliFile, 'utf8', function(err, data) {  
     if (err) { 
       logger.error("read failed: " + err); 
-      data = "{}";
-      data.loli = [];
+      data = "{ "loli": [] }";
     }
   
     var jsonData = JSON.parse(data);
@@ -35,8 +34,7 @@ function readLoli()
   fs.readFile(loliFile, 'utf8', function(err, data) {  
     if (err) { 
       logger.error("read failed: " + err); 
-      data = "{}";
-      data.loli = [];
+      data = "{ "loli": [] }";
     }
   
     var loliList = JSON.parse(data).loli;

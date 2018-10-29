@@ -112,7 +112,7 @@ bot.on('message', (message) =>
       case 'setname':
         jdr.setName(message, args);
         break;
-      case 'vote':
+      /*case 'vote':
         var reactions = [];
         message.guild.channels.get('506213246739415060').fetchMessage('506214334293213195').reactions.forEach(function(reaction) {
           reactions.push(reaction);
@@ -137,7 +137,7 @@ bot.on('message', (message) =>
           result = result + listUser.join(', ') + '\n';
         }
         message.channel.send(result);
-        break;
+        break;*/
      }
    }
 });
