@@ -34,7 +34,7 @@ function readLoli()
   fs.readFile(loliFile, 'utf8', function(err, data) {  
     if (err) { 
       logger.error("read failed: " + err); 
-      data = "{ "loli": [] }";
+      data = '{ "loli": [] }';
     }
   
     var loliList = JSON.parse(data).loli;
