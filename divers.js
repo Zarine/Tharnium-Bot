@@ -80,6 +80,7 @@ module.exports = {
   
   printReaction: function(message, reaction)
   {
+    if(reaction.count === 1) { return; }
     reaction.fetchUsers()
     .then(users => {
       var listUser = [];
