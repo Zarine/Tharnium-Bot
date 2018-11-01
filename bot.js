@@ -117,16 +117,16 @@ bot.on('message', (message) =>
         message.guild.channels.get('506213246739415060').fetchMessage('506214334293213195')
         .then(firstMessage => {
 
-          /*message.guild.channels.get('506213246739415060').fetchMessage('506214739316047872')
-          .then(secondMessage => {*/
+          message.guild.channels.get('506213246739415060').fetchMessage('506214739316047872')
+          .then(secondMessage => {
             var reactionList = [];
             firstMessage.reactions.forEach(function(reaction) {
               reactionList.push(reaction);
             });
             logger.info("that's done");
-            /*secondMessage.reactions.forEach(function(reaction) {
-              reactions.push(reaction);
-            });*/
+            secondMessage.reactions.forEach(function(reaction) {
+              reactionList.push(reaction);
+            });
             
             var result = "";
             for(var i = 0; i < reactionList.length; i++)
@@ -134,6 +134,7 @@ bot.on('message', (message) =>
               var currentReaction = reactionList[i];
               result = result + currentReaction.emoji + " : " + (currentReaction.count - 1) + " vote(s) de: ";
               var listUser = [];
+              logger.info(currentReaction.users);
               currentReaction.users.forEach(function(user)
               {
                 if(user.username !== 'Zarine')
@@ -144,11 +145,8 @@ bot.on('message', (message) =>
               result = result + listUser.join(', ') + '\n';
             }
             message.channel.send(result);
-          /*});*/
+          });
         })
-        .catch(function(error) {
-          logger.info(error);
-        });
         break;
      }
    }
