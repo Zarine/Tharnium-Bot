@@ -156,7 +156,7 @@ module.exports = {
     logger.info(diff);
     diff.setTime( diff.getTime() + diff.getTimezoneOffset() * 60 * 1000 ); 
     
-    var result = "<@" + member.id + ">, vous etes sur le serveur depuis le : " + joinDate.getDate() + "/" + (joinDate.getMonth() + 1) + "/" + joinDate.getFullYear() + ". Cela fait " + (diff.getFullYear() - 1970) + " an(s), " + diff.getMonth() + " mois, " + (diff.getDate()-1) + " jour(s), " + diff.getHours() + " heure(s) et " + diff.getMinutes() + " minutes"; 
+    var result = "<@" + member.id + ">, vous etes sur le serveur depuis le : " + joinDate.getDate() + "/" + (joinDate.getMonth() + 1) + "/" + joinDate.getFullYear() + ". Cela fait " + (diff.getFullYear() - 1970) + " an(s), " + diff.getMonth() + " mois, " + (diff.getDate()-1) + " jour(s), " + diff.getHours() + " heure(s) et " + diff.getMinutes() + " minute(s)"; 
     
     message.channel.send(result);
   }
