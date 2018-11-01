@@ -76,5 +76,23 @@ module.exports = {
     {
       addLoliToFile(message, args);
     }
+  },
+  
+  printReaction: function(message, reaction)
+  {
+    reaction.fetchUsers();
+    .then(users => {
+      var listUser = [];
+      
+      users.forEach(function(user)
+      {
+        if(user.username !== 'Zarine')
+        {
+          listUser.push(user.username);
+        }
+      });
+      var result = reaction.emoji + " : " + (reaction.count - 1) + " vote(s) de: " + listUser.join(', ') + '\n';
+      message.channel.send(result);
+    });
   }
 }

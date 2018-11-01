@@ -130,21 +130,7 @@ bot.on('message', (message) =>
             for(var i = 0; i < reactionList.length; i++)
             {
               var currentReaction = reactionList[i];
-              
-              currentReaction.fetchUsers()
-              .then(users => {
-                var listUser = [];
-                
-                users.forEach(function(user)
-                {
-                  if(user.username !== 'Zarine')
-                  {
-                    listUser.push(user.username);
-                  }
-                });
-                var result = currentReaction.emoji + " : " + (currentReaction.count - 1) + " vote(s) de: " + listUser.join(', ') + '\n';
-                message.channel.send(result);
-              });
+              divers.printReaction(message, currentReaction);
             }
           });
         })
