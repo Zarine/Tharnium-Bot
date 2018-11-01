@@ -17,7 +17,6 @@ function addLoliToFile(message, args)
     var jsonData = JSON.parse(data);
   
     jsonData.loli.push(args.join(" "));
-    logger.info(JSON.stringify(jsonData));
       
     fs.writeFile(loliFile, JSON.stringify(jsonData), function(err) {
       if(err) {
@@ -32,15 +31,17 @@ function addLoliToFile(message, args)
 
 function readLoli()
 {
+  var loliToDisplay = "";
   fs.readFile(loliFile, 'utf8', function(err, data) {  
     if (err) { 
       logger.error("read failed: " + err); 
       data = '{ "loli": [] }';
     }
-    logger.info(data);
+
     var loliList = JSON.parse(data).loli;
-    return loliList[Math.floor((Math.random() * loliList.length))];
+    loliToDisplay = loliList[Math.floor((Math.random() * loliList.length))];
   });
+  return loliToDisplay;
 }
 
 
