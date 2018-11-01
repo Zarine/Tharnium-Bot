@@ -123,7 +123,6 @@ bot.on('message', (message) =>
             firstMessage.reactions.forEach(function(reaction) {
               reactionList.push(reaction);
             });
-            logger.info("that's done");
             secondMessage.reactions.forEach(function(reaction) {
               reactionList.push(reaction);
             });
@@ -137,6 +136,8 @@ bot.on('message', (message) =>
               logger.info(currentReaction.users);
               currentReaction.users.forEach(function(user)
               {
+                logger.info(user);
+                logger.info(user.username);
                 if(user.username !== 'Zarine')
                 {
                   listUser.push(user.username);
