@@ -146,7 +146,7 @@ bot.on('message', (message) =>
                 });
                 result = result + listUser.join(', ') + '\n';
                 message.channel.send(result);
-              }
+              });
             }
           });
         })
