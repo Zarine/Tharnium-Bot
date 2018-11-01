@@ -116,17 +116,16 @@ bot.on('message', (message) =>
         
         message.guild.channels.get('506213246739415060').fetchMessage('506214334293213195')
         .then(firstMessage => {
-          logger.info(firstMessage.content);
-          logger.info(firstMessage.reactions);
-          message.guild.channels.get('506213246739415060').fetchMessage('506214739316047872')
-          .then(secondMessage => {
+
+          /*message.guild.channels.get('506213246739415060').fetchMessage('506214739316047872')
+          .then(secondMessage => {*/
             var reaction = [];
             firstMessage.reactions.forEach(function(reaction) {
               reactions.push(reaction);
             });
-            secondMessage.reactions.forEach(function(reaction) {
+            /*secondMessage.reactions.forEach(function(reaction) {
               reactions.push(reaction);
-            });
+            });*/
             
             var result = "";
             for(var i = 0; i < reactions.length; i++)
@@ -144,7 +143,7 @@ bot.on('message', (message) =>
               result = result + listUser.join(', ') + '\n';
             }
             message.channel.send(result);
-          });
+          /*});*/
         });
         break;
      }
