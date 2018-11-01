@@ -119,11 +119,9 @@ bot.on('message', (message) =>
 
           /*message.guild.channels.get('506213246739415060').fetchMessage('506214739316047872')
           .then(secondMessage => {*/
-            var reaction = [];
-            logger.info("I'm here");
+            var reactionList = [];
             firstMessage.reactions.forEach(function(reaction) {
-              logger.info("I'm there");
-              reactions.push(reaction);
+              reactionList.push(reaction);
             });
             logger.info("that's done");
             /*secondMessage.reactions.forEach(function(reaction) {
@@ -131,9 +129,9 @@ bot.on('message', (message) =>
             });*/
             
             var result = "";
-            for(var i = 0; i < reactions.length; i++)
+            for(var i = 0; i < reactionList.length; i++)
             {
-              var currentReaction = reactions[i];
+              var currentReaction = reactionList[i];
               result = result + currentReaction.emoji + " : " + (currentReaction.count - 1) + " vote(s) de: ";
               var listUser = [];
               currentReaction.users.forEach(function(user)
