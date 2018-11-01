@@ -125,13 +125,11 @@ bot.on('message', (message) =>
             });
             secondMessage.reactions.forEach(function(reaction) {
               reactionList.push(reaction);
-              logger.info(reaction);
             });
             
             for(var i = 0; i < reactionList.length; i++)
             {
               var currentReaction = reactionList[i];
-              var result = currentReaction.emoji + " : " + (currentReaction.count - 1) + " vote(s) de: ";
               
               currentReaction.fetchUsers()
               .then(users => {
@@ -144,7 +142,7 @@ bot.on('message', (message) =>
                     listUser.push(user.username);
                   }
                 });
-                result = result + listUser.join(', ') + '\n';
+                var result = currentReaction.emoji + " : " + (currentReaction.count - 1) + " vote(s) de: " + listUser.join(', ') + '\n';
                 message.channel.send(result);
               });
             }
