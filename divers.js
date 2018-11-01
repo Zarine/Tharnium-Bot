@@ -17,6 +17,7 @@ function addLoliToFile(message, args)
     var jsonData = JSON.parse(data);
   
     jsonData.loli.push(args.join(" "));
+    logger.info(JSON.stringify(jsonData));
       
     fs.writeFile(loliFile, JSON.stringify(jsonData), function(err) {
       if(err) {
@@ -36,7 +37,7 @@ function readLoli()
       logger.error("read failed: " + err); 
       data = '{ "loli": [] }';
     }
-  
+    logger.info(data);
     var loliList = JSON.parse(data).loli;
     return loliList[Math.floor((Math.random() * loliList.length))];
   });
