@@ -120,12 +120,12 @@ bot.on('message', (message) =>
           /*message.guild.channels.get('506213246739415060').fetchMessage('506214739316047872')
           .then(secondMessage => {*/
             var reaction = [];
-            logger.log("I'm here");
+            logger.info("I'm here");
             firstMessage.reactions.forEach(function(reaction) {
-              logger.log("I'm there");
+              logger.info("I'm there");
               reactions.push(reaction);
             });
-            logger.log("that's done");
+            logger.info("that's done");
             /*secondMessage.reactions.forEach(function(reaction) {
               reactions.push(reaction);
             });*/
@@ -149,7 +149,7 @@ bot.on('message', (message) =>
           /*});*/
         })
         .catch(function(error) {
-          logger.log(error);
+          logger.info(error);
         });
         break;
      }
