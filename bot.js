@@ -114,11 +114,13 @@ bot.on('message', (message) =>
         break;
       case 'vote':
         
-        message.guild.channels.get('506213246739415060').fetchMessage('506214334293213195').then(firstMessage => {
-          logger.info(firstMessage);
-          message.guild.channels.get('506213246739415060').fetchMessage('506214739316047872').then(secondMessage => {
+        message.guild.channels.get('506213246739415060').fetchMessage('506214334293213195')
+        .then(firstMessage => {
+          logger.info(firstMessage.content);
+          logger.info(firstMessage.reactions);
+          message.guild.channels.get('506213246739415060').fetchMessage('506214739316047872')
+          .then(secondMessage => {
             var reaction = [];
-            logger.info(secondMessage);
             firstMessage.reactions.forEach(function(reaction) {
               reactions.push(reaction);
             });
