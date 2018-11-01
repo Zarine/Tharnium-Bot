@@ -133,11 +133,9 @@ bot.on('message', (message) =>
               var currentReaction = reactionList[i];
               result = result + currentReaction.emoji + " : " + (currentReaction.count - 1) + " vote(s) de: ";
               var listUser = [];
-              logger.info(currentReaction.users);
+              logger.info(currentReaction);
               currentReaction.users.forEach(function(user)
               {
-                logger.info(user);
-                logger.info(user.username);
                 if(user.username !== 'Zarine')
                 {
                   listUser.push(user.username);
