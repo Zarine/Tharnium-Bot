@@ -29,9 +29,8 @@ function addLoliToFile(message, args)
   });
 }
 
-function readLoli()
+function readLoli(message)
 {
-  var loliToDisplay = "";
   fs.readFile(loliFile, 'utf8', function(err, data) {  
     if (err) { 
       logger.error("read failed: " + err); 
@@ -39,9 +38,8 @@ function readLoli()
     }
 
     var loliList = JSON.parse(data).loli;
-    loliToDisplay = loliList[Math.floor((Math.random() * loliList.length))];
+    message.channel.send('La loli de Le Rocki ! ' + loliList[Math.floor((Math.random() * loliList.length))]);
   });
-  return loliToDisplay;
 }
 
 
@@ -67,9 +65,9 @@ module.exports = {
     }
   },
   
-  loliFromRocki: function()
+  loliFromRocki: function(message)
   {
-    return readLoli();
+    return readLoli(message);
   },
   
   addLoli: function(message, args)

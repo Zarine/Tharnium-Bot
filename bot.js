@@ -70,7 +70,7 @@ bot.on('message', (message) =>
         message.channel.send('Pannaistes retourne bosser ! https://gph.is/1Fbp1e6');
         break;
       case 'rocki':
-        message.channel.send('La loli de Le Rocki ! ' + divers.loliFromRocki());
+        divers.loliFromRocki(message);
         break;
       case 'addloli':
         divers.addLoli(message, args)
