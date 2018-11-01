@@ -73,7 +73,7 @@ bot.on('message', (message) =>
         message.channel.send('La loli de Le Rocki ! ' + divers.loliFromRocki());
         break;
       case 'addloli':
-        divers.addLoli(message)
+        divers.addLoli(message, args)
         break;
       case 'testnotif':
         var textToSend = '<@' + message.author.id + '> test de notif';
