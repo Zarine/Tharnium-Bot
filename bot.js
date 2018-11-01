@@ -144,6 +144,9 @@ bot.on('message', (message) =>
             }
             message.channel.send(result);
           /*});*/
+        })
+        .catch(function(error) {
+          logger.log(error);
         });
         break;
      }
