@@ -125,6 +125,7 @@ bot.on('message', (message) =>
             });
             secondMessage.reactions.forEach(function(reaction) {
               reactionList.push(reaction);
+              logger.info(reaction);
             });
             
             var result = "";
@@ -133,7 +134,7 @@ bot.on('message', (message) =>
               var currentReaction = reactionList[i];
               result = result + currentReaction.emoji + " : " + (currentReaction.count - 1) + " vote(s) de: ";
               var listUser = [];
-              logger.info(currentReaction);
+
               currentReaction.users.forEach(function(user)
               {
                 if(user.username !== 'Zarine')
