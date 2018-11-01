@@ -128,23 +128,26 @@ bot.on('message', (message) =>
               logger.info(reaction);
             });
             
-            var result = "";
             for(var i = 0; i < reactionList.length; i++)
             {
               var currentReaction = reactionList[i];
-              result = result + currentReaction.emoji + " : " + (currentReaction.count - 1) + " vote(s) de: ";
-              var listUser = [];
-
-              currentReaction.users.forEach(function(user)
-              {
-                if(user.username !== 'Zarine')
+              var result = currentReaction.emoji + " : " + (currentReaction.count - 1) + " vote(s) de: ";
+              
+              currentReaction.fetchUsers()
+              .then(users => {
+                var listUser = [];
+                
+                users.forEach(function(user)
                 {
-                  listUser.push(user.username);
-                }
-              });
-              result = result + listUser.join(', ') + '\n';
+                  if(user.username !== 'Zarine')
+                  {
+                    listUser.push(user.username);
+                  }
+                });
+                result = result + listUser.join(', ') + '\n';
+                message.channel.send(result);
+              }
             }
-            message.channel.send(result);
           });
         })
         break;
