@@ -112,32 +112,37 @@ bot.on('message', (message) =>
       case 'setname':
         jdr.setName(message, args);
         break;
-      /*case 'vote':
-        var reactions = [];
-        message.guild.channels.get('506213246739415060').fetchMessage('506214334293213195').reactions.forEach(function(reaction) {
-          reactions.push(reaction);
-        });
-        message.guild.channels.get('506213246739415060').fetchMessage('506214739316047872').reactions.forEach(function(reaction) {
-          reactions.push(reaction);
-        });
+      case 'vote':
         
-        var result = "";
-        for(var i = 0; i < reactions.length; i++)
-        {
-          var currentReaction = reactions[i];
-          result = result + currentReaction.emoji + " : " + (currentReaction.count - 1) + " vote(s) de: ";
-          var listUser = [];
-          currentReaction.users.forEach(function(user)
-          {
-            if(user.username !== 'Zarine')
+        message.guild.channels.get('506213246739415060').fetchMessage('506214334293213195').then(firstMessage => {
+          message.guild.channels.get('506213246739415060').fetchMessage('506214739316047872').then(secondMessage => {
+            var reaction = [];
+            firstMessage.reactions.forEach(function(reaction) {
+              reactions.push(reaction);
+            });
+            firstMessage.reactions.forEach(function(reaction) {
+              secondMessage.push(reaction);
+            });
+            
+            var result = "";
+            for(var i = 0; i < reactions.length; i++)
             {
-              listUser.push(user.username);
+              var currentReaction = reactions[i];
+              result = result + currentReaction.emoji + " : " + (currentReaction.count - 1) + " vote(s) de: ";
+              var listUser = [];
+              currentReaction.users.forEach(function(user)
+              {
+                if(user.username !== 'Zarine')
+                {
+                  listUser.push(user.username);
+                }
+              });
+              result = result + listUser.join(', ') + '\n';
             }
+            message.channel.send(result);
           });
-          result = result + listUser.join(', ') + '\n';
-        }
-        message.channel.send(result);
-        break;*/
+        });
+        break;
      }
    }
 });
