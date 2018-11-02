@@ -4,7 +4,7 @@ var config = require('./conf.json');
 
 var loliFile = config.baseLocation + 'loli.json';
 
-var voteList = { "🇦":"Miss Midi-Pyrénées", "🇧":"Miss Poitou-Charentes", "🇨":"Miss Normandie", "🇩":"Miss Aquitaine", "🇪":"Miss Île-de-France", "🇫":"Miss Nord-Pas-de-Calais", "🇬":"Miss Picardie", "🇭":"Miss Guyane", "🇮":"Miss Martinique", "🇯":"Miss Bretagne", "🇰":"Miss Pays de la Loire", "🇱":"Miss Centre Val de Loire", "🇲":"Miss Bourgogne", "🇳":"Miss Limousin", "🇴":"Miss Guadeloupe", "🇵":"Miss Champagne-Ardenne", "🇶":"Miss Provence", "🇷":"Miss Mayotte", "🇸":"Miss Corse", "🇹":"Miss Lorraine", "🇺":"Miss Alsace", "🇻":"Miss Tahiti", "🇼":"Miss Saint-Martin/Saint-Barthélémy", "🇽":"Miss Côte d'Azur", "🇾":"Miss Languedoc-Roussillon", "🇿":"Miss Franche-Comté", "1️⃣":"Miss Réunion", "2️⃣":"Miss Nouvelle-Calédonie", "3️⃣":"Miss Auvergne", "4️⃣":"Miss Rhône-Alpes" };
+var voteList = { "🇦":"Miss Midi-Pyrénées", "🇧":"Miss Poitou-Charentes", "🇨":"Miss Normandie", "🇩":"Miss Aquitaine", "🇪":"Miss Île-de-France", "🇫":"Miss Nord-Pas-de-Calais", "🇬":"Miss Picardie", "🇭":"Miss Guyane", "🇮":"Miss Martinique", "🇯":"Miss Bretagne", "🇰":"Miss Pays de la Loire", "🇱":"Miss Centre Val de Loire", "🇲":"Miss Bourgogne", "🇳":"Miss Limousin", "🇴":"Miss Guadeloupe", "🇵":"Miss Champagne-Ardenne", "🇶":"Miss Provence", "🇷":"Miss Mayotte", "🇸":"Miss Corse", "🇹":"Miss Lorraine", "🇺":"Miss Alsace", "🇻":"Miss Tahiti", "🇼":"Miss Saint-Martin/Saint-Barthélémy", "🇽":"Miss Côte d'Azur", "🇾":"Miss Languedoc-Roussillon", "🇿":"Miss Franche-Comté", "1":"Miss Réunion", "2":"Miss Nouvelle-Calédonie", "3":"Miss Auvergne", "4":"Miss Rhône-Alpes" };
 
 function addLoliToFile(message, args)
 {
@@ -99,7 +99,7 @@ module.exports = {
       }
       else
       {
-        result = voteList[reaction.emoji.name] + " : " + (reaction.count - 1) + " vote(s) de: " + listUser.join(', ') + '\n';
+        result = reaction.emoji + " : " + (reaction.count - 1) + " vote(s) de: " + listUser.join(', ') + '\n';
       }
       message.channel.send(result);
     });
