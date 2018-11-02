@@ -99,7 +99,7 @@ module.exports = {
       }
       else
       {
-        result = reaction.emoji.name + " : " + (reaction.count - 1) + " vote(s) de: " + listUser.join(', ') + '\n';
+        result = reaction.emoji.id + "/" + reaction.emoji.name + " : " + (reaction.count - 1) + " vote(s) de: " + listUser.join(', ') + '\n';
       }
       message.channel.send(result);
     });
