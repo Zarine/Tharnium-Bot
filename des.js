@@ -11,7 +11,7 @@ module.exports = {
       result += valeur;
       details.push(valeur);
     }
-  var text = "Résultat : " + result + "\n Les dés ont fait : " + details.join(", ");
+    var text = "Résultat : " + result + "\n Les dés ont fait : " + details.join(", ");
     return text;
   }
 }

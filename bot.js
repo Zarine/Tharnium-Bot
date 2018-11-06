@@ -49,6 +49,13 @@ bot.on('message', (message) =>
   if (message.content.startsWith(config.prefix)) {
     
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    
+    if(args[0].match(/^\d/)) // start with a number
+    {
+      message.channel.send(des.lanceDes(args));
+      return;
+    }
+    
     const command = args.shift().toLowerCase();
      
     switch(command) {
@@ -79,9 +86,6 @@ bot.on('message', (message) =>
       case 'testnotif':
         var textToSend = '<@' + message.author.id + '> test de notif';
         message.channel.send(textToSend);
-        break;
-      case 'lance':
-        message.channel.send(des.lanceDes(args));
         break;
       case 'time':
         update.time(message);
