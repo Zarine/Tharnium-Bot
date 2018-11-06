@@ -9,6 +9,7 @@ var utils = require('./utils');
 var divers = require('./divers');
 var note = require('./note');
 var jdr = require('./jdr');
+var commandHelp = require('./commandHelp');
 
 process.setMaxListeners(500);
 
@@ -52,7 +53,7 @@ bot.on('message', (message) =>
      
     switch(command) {
       case 'command':
-        message.channel.send("Les commandes disponibles sont \n        !lance : permet de lancer des dés. Exemple : !lance 3d7 \n        !time : permet de savoir depuis quand vous êtes sur le serveur \n        !rocki : permet de faire plaisir à un modo \n        !panna : permet de demander à l'autre modo de travailler \n        !tharn : permet de tester quelques rôles (modo, admin...)");
+        commandHelp.getCommand(message);
         break;
       case 'planning':
         if(message.author.id === config.plannerId)

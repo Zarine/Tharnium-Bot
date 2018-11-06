@@ -1,0 +1,9 @@
+{
+  "commandList": [
+    { "name":"XdY", "description":"Permet de lancer X dés à Y faces.", "example":"3d7" },
+    { "name":"time", "description":"Permet de savoir depuis quand vous êtes sur le serveur." },
+    { "name":"rocki", "description":"Permet de faire apparaître une loli sélectionnée par Le Rocki." },
+    { "name":"panna", "description":"Permet de demander à Pannaistes de travailler. Au boulot!" },
+    { "name":"tharn", "description":"Permet de tester quelques rôles (modo, admin...) - Plus un outil pour Zarine qu'autre chose." }
+  ]
+}
