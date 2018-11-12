@@ -184,18 +184,18 @@ module.exports = {
     {
       var textToSend = [];
       var character = jsonData.characterList[id];
-      textToSend.push('HP avant: ' + character.hp + "/" + character.hpmax + '\n');
+      textToSend.push('HP: ' + character.hp + "/" + character.hpmax + ' => ');
       
       var change = args[1];
       
       character.hp = updateNumericValue(character.hp, change);
       if(character.hp > character.hpmax) { character.hp = character.hpmax; }
       
-      textToSend.push('HP maintenant: ' + character.hp + "/" + character.hpmax);
+      textToSend.push(character.hp + "/" + character.hpmax);
       
       fs.writeFile(getFileName(message), JSON.stringify(jsonData), function(err) 
       {
-        if(err) { message.channel.send('<@' + message.author.id + ">, échec de la mise à jour du nom !"); }
+        if(err) { message.channel.send('<@' + message.author.id + ">, échec de la mise à jour des HP !"); }
         else { message.channel.send(textToSend.join('')); }
       });
     }
@@ -232,7 +232,7 @@ module.exports = {
       
       fs.writeFile(getFileName(message), JSON.stringify(jsonData), function(err) 
       {
-        if(err) { message.channel.send('<@' + message.author.id + ">, échec de la mise à jour du nom !"); }
+        if(err) { message.channel.send('<@' + message.author.id + ">, échec de la mise à jour des HP max !"); }
         else { message.channel.send(textToSend.join('')); }
       });
     }
