@@ -7,6 +7,35 @@ function getFileName(message)
   return (config.baseLocation + "jdr" + message.channel.id + ".json");
 }
 
+function updateNumericValue(value, update)
+{
+  if(update.startsWith('+')) 
+  {
+    var update = update.slice(1);
+    return value + parseInt(update, 10);
+  }
+  else if(update.startsWith('-')) 
+  {
+    var update = update.slice(1);
+    return value - parseInt(update, 10);
+  }
+  else if(update.startsWith('*')) 
+  {
+    var update = update.slice(1);
+    return Math.round((value * parseFloat(update, 10)));
+  }
+  else if(update.startsWith('/')) 
+  {
+    var update = update.slice(1);
+    return Math.round((value / parseInt(update, 10)));
+  }
+  else 
+  {
+    var update = parseInt(update, 10);
+    return update;
+  }
+}
+
 function getData(message)
 {
     var data;
@@ -145,7 +174,6 @@ module.exports = {
     
     var jsonData = getData(message);
     if(jsonData === undefined) { return; }
-    
     var id = jsonData.playerList[args[0]];;
     
     if(id === undefined)
@@ -154,36 +182,13 @@ module.exports = {
     }
     else
     {
-      var changement = args[1];
-      var character = jsonData.characterList[id];
       var textToSend = [];
       textToSend.push('HP avant: ' + character.hp + "/" + character.hpmax + '\n');
       
-      if(changement.startsWith('+')) 
-      {
-        var value = changement.slice(1);
-        character.hp += parseInt(value, 10);
-      }
-      else if(changement.startsWith('-')) 
-      {
-        var value = changement.slice(1);
-        character.hp -= parseInt(value, 10);
-      }
-      else if(changement.startsWith('*')) 
-      {
-        var value = changement.slice(1);
-        character.hp = Math.round((character.hp * parseFloat(value, 10)));
-      }
-      else if(changement.startsWith('/')) 
-      {
-        var value = changement.slice(1);
-        character.hp = Math.round((character.hp / parseInt(value, 10)));
-      }
-      else 
-      {
-        var value = parseInt(changement, 10);
-        character.hp = value;
-      }
+      var changement = args[1];
+      var character = jsonData.characterList[id];
+      character.hp = updateNumericValue(character.hp, changement);
+      if(character.hp > character.hpmax) { character.hp = character.hpmax; }
       
       textToSend.push('HP maintenant: ' + character.hp + "/" + character.hpmax);
       
@@ -197,5 +202,38 @@ module.exports = {
 
   changeHPmax(message, args)
   {
+    if(args.length < 2)
+    {
+      message.channel.send('<@' + message.author.id + '>, usage est : !hpmax alias changement');
+      return;
+    }
+    
+    var jsonData = getData(message);
+    if(jsonData === undefined) { return; }
+    var id = jsonData.playerList[args[0]];;
+    
+    if(id === undefined)
+    {
+      message.channel.send('<@' + message.author.id + '>, cet alias est inconnu !');
+    }
+    else
+    {
+      var textToSend = [];
+      textToSend.push('HP avant: ' + character.hp + "/" + character.hpmax + '\n');
+      
+      var changement = args[1];
+      var character = jsonData.characterList[id];
+      character.hpmax = updateNumericValue(character.hpmax, changement);
+      if(character.hp > character.hpmax) { character.hp = character.hpmax; }
+      
+      textToSend.push('HP maintenant: ' + character.hp + "/" + character.hpmax);
+      
+      fs.writeFile(getFileName(message), JSON.stringify(jsonData), function(err) 
+      {
+        if(err) { message.channel.send('<@' + message.author.id + ">, échec de la mise à jour du nom !"); }
+        else { message.channel.send(textToSend.join('')); }
+      });
+    }
+    
   }
 }
