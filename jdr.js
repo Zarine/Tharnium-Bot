@@ -154,7 +154,7 @@ module.exports = {
     }
     else
     {
-      var changement = arg[1];
+      var changement = args[1];
       var character = jsonData.characterList[id];
       var textToSend = [];
       textToSend.push('HP avant: ' + character.hp + "/" + character.hpmax + '\n');
