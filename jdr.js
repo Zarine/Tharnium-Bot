@@ -172,7 +172,7 @@ module.exports = {
       else if(changement.startsWith('*')) 
       {
         var value = changement.slice(1);
-        character.hp = Math.round((character.hp * parseInt(value, 10)));
+        character.hp = Math.round((character.hp * parseFloat(value, 10)));
       }
       else if(changement.startsWith('/')) 
       {
