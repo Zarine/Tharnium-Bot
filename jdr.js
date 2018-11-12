@@ -108,7 +108,7 @@ module.exports = {
       textToSend.push('Il est niveau ' + character.level + '.\n');
       textToSend.push('HP: ' + character.hp + "/" + character.hpmax + '\n');
       textToSend.push('MP: ' + character.mp + "/" + character.mpmax + '\n');
-      textToSend.push('Gold: ' + character.cash);
+      textToSend.push('Pièces d\'or: ' + character.cash);
       message.channel.send(textToSend.join(''));
     }
   },
@@ -162,22 +162,22 @@ module.exports = {
       if(changement.startsWith('+')) 
       {
         var value = changement.slice(1);
-        character.hp += value;
+        character.hp = parseInt(character.hp, 10) + value;
       }
       else if(changement.startsWith('-')) 
       {
         var value = changement.slice(1);
-        character.hp -= value;
+        character.hp = parseInt(character.hp, 10) - value;
       }
       else if(changement.startsWith('*')) 
       {
         var value = changement.slice(1);
-        character.hp = Math.round((character.hp * value));
+        character.hp = Math.round((parseInt(character.hp, 10) * value));
       }
       else if(changement.startsWith('/')) 
       {
         var value = changement.slice(1);
-        character.hp = Math.round((character.hp / value));
+        character.hp = Math.round((parseInt(character.hp, 10) / value));
       }
       else 
       {
