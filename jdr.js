@@ -103,7 +103,13 @@ module.exports = {
     {
       var character = jsonData.characterList[id];
       var textToSend = [];
-      textToSend.push('<@').push(message.author.id).push('>, le personnage se nomme ').push(character.name).push('. Il est niveau ').push(character.level).push('.');
+      textToSend.push('<@');
+      textToSend.push(message.author.id);
+      textToSend.push('>, le personnage se nomme ');
+      textToSend.push(character.name);
+      textToSend.push('. Il est niveau ');
+      textToSend.push(character.level);
+      textToSend.push('.');
       message.channel.send(textToSend.join(''));
     }
   },
