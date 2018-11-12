@@ -161,22 +161,22 @@ module.exports = {
       
       if(changement.startsWith('+')) 
       {
-        var value = changement.splice(1);
+        var value = changement.slice(1);
         character.hp += value;
       }
       else if(changement.startsWith('-')) 
       {
-        var value = changement.splice(1);
+        var value = changement.slice(1);
         character.hp -= value;
       }
       else if(changement.startsWith('*')) 
       {
-        var value = changement.splice(1);
+        var value = changement.slice(1);
         character.hp = Math.round((character.hp * value));
       }
       else if(changement.startsWith('/')) 
       {
-        var value = changement.splice(1);
+        var value = changement.slice(1);
         character.hp = Math.round((character.hp / value));
       }
       else 
