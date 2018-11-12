@@ -114,8 +114,14 @@ bot.on('message', (message) =>
       case 'displaycharacter':
         jdr.displayCharacter(message, args);
         break;
-      case 'setname':
+      case 'name':
         jdr.setName(message, args);
+        break;
+      case 'hp'
+        jdr.changeHP(message, args);
+        break;
+      case 'hpmax':
+        jdr.changeHPmax(message, args);
         break;
       case 'vote':
         
