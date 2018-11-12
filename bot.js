@@ -117,7 +117,7 @@ bot.on('message', (message) =>
       case 'name':
         jdr.setName(message, args);
         break;
-      case 'hp'
+      case 'hp':
         jdr.changeHP(message, args);
         break;
       case 'hpmax':
