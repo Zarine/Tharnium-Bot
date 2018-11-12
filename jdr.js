@@ -162,22 +162,22 @@ module.exports = {
       if(changement.startsWith('+')) 
       {
         var value = changement.slice(1);
-        character.hp = parseInt(character.hp, 10) + value;
+        character.hp += parseInt(value, 10);
       }
       else if(changement.startsWith('-')) 
       {
         var value = changement.slice(1);
-        character.hp = parseInt(character.hp, 10) - value;
+        character.hp -= parseInt(value, 10);
       }
       else if(changement.startsWith('*')) 
       {
         var value = changement.slice(1);
-        character.hp = Math.round((parseInt(character.hp, 10) * value));
+        character.hp = Math.round((character.hp * parseInt(value, 10)));
       }
       else if(changement.startsWith('/')) 
       {
         var value = changement.slice(1);
-        character.hp = Math.round((parseInt(character.hp, 10) / value));
+        character.hp = Math.round((character.hp / parseInt(value, 10)));
       }
       else 
       {
