@@ -183,11 +183,12 @@ module.exports = {
     else
     {
       var textToSend = [];
+      var character = jsonData.characterList[id];
       textToSend.push('HP avant: ' + character.hp + "/" + character.hpmax + '\n');
       
-      var changement = args[1];
-      var character = jsonData.characterList[id];
-      character.hp = updateNumericValue(character.hp, changement);
+      var change = args[1];
+      
+      character.hp = updateNumericValue(character.hp, change);
       if(character.hp > character.hpmax) { character.hp = character.hpmax; }
       
       textToSend.push('HP maintenant: ' + character.hp + "/" + character.hpmax);
@@ -219,11 +220,12 @@ module.exports = {
     else
     {
       var textToSend = [];
-      textToSend.push('HP avant: ' + character.hp + "/" + character.hpmax + '\n');
-      
-      var changement = args[1];
       var character = jsonData.characterList[id];
-      character.hpmax = updateNumericValue(character.hpmax, changement);
+      var change = args[1];
+      
+      textToSend.push('HP avant: ' + character.hp + "/" + character.hpmax + '\n');
+
+      character.hpmax = updateNumericValue(character.hpmax, change);
       if(character.hp > character.hpmax) { character.hp = character.hpmax; }
       
       textToSend.push('HP maintenant: ' + character.hp + "/" + character.hpmax);
