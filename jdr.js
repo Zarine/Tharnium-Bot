@@ -102,8 +102,9 @@ module.exports = {
     else
     {
       var character = jsonData.characterList[id];
-      var textToSend = '<@' + message.author.id + '>, le personnage se nomme ' + character.name + '. Il est niveau ' + character.level + '.';
-      message.channel.send(textToSend);
+      var textToSend = [];
+      textToSend.push('<@').push(message.author.id).push('>, le personnage se nomme ').push(character.name).push('. Il est niveau ').push(character.level).push('.');
+      message.channel.send(textToSend.join(''));
     }
   },
   
