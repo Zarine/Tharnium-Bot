@@ -44,9 +44,33 @@ module.exports = {
       response.push('Vous avez trouver le bon nombre! Félicitation!');
       found = false;
       lastPlayer = "";
+      
+      if(score[message.author.id] === undefined)
+      {
+        score[message.author.id] = {};
+        score[message.author.id].score = 1;
+      }
+      else
+      {
+        score[message.author.id].score += 1;
+        
+      }
+      score[message.author.id].name = message.author.username; // set or update the player name
     }
     
     message.channel.send(response.join(''));
 
+  },
+  
+  score: function(message, args)
+  {
+    var response = [];
+    response.push('Le tableau des scores est le suivant:');
+    
+    Object.keys(score).forEach( function(key) {
+      player = score[key];
+      response.push(player.name + ' avec ' + player.score + ' point(s)');
+    });
+    message.channel.send(response.join('\n'));
   }
 }
