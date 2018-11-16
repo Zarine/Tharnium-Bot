@@ -10,6 +10,7 @@ var divers = require('./divers');
 var note = require('./note');
 var jdr = require('./jdr');
 var commandHelp = require('./commandHelp');
+var guessGame = require('./guessGame');
 
 process.setMaxListeners(500);
 
@@ -123,6 +124,8 @@ bot.on('message', (message) =>
       case 'hpmax':
         jdr.changeHPmax(message, args);
         break;
+      case 'devine':
+        guessGame.guessGame(message, args);
       case 'vote':
         
         message.guild.channels.get('506213246739415060').fetchMessage('506214334293213195')
