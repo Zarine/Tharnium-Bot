@@ -126,6 +126,7 @@ bot.on('message', (message) =>
         break;
       case 'devine':
         guessGame.guessGame(message, args);
+        break;
       case 'vote':
         
         message.guild.channels.get('506213246739415060').fetchMessage('506214334293213195')
