@@ -13,6 +13,13 @@ module.exports = {
       return;
     }
     
+    if(lastPlayer === message.author.id)
+    {
+      message.channel.send('<@' + message.author.id + '>, vous devez attendre qu\'un autre joueur tente de trouver!');
+      return;
+    }
+    lastPlayer = message.author.id;
+    
     var response = [];
     response.push('<@' + message.author.id + '>, ');
     if(found === true)
@@ -26,16 +33,17 @@ module.exports = {
     
     if(value < CurrentNumber)
     {
-      response.push('Le nombre a trouvé est plus grand');
+      response.push('Le nombre a trouver est plus grand');
     }
     else if(value > CurrentNumber)
     {
-      response.push('Le nombre a trouvé est plus petit');
+      response.push('Le nombre a trouver est plus petit');
     }
     else
     {
-      response.push('Vous avez trouvé le bon nombre! Félicitation!');
+      response.push('Vous avez trouver le bon nombre! Félicitation!');
       found = false;
+      lastPlayer = "";
     }
     
     message.channel.send(response.join(''));
