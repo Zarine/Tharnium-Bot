@@ -42,7 +42,7 @@ module.exports = {
     else
     {
       response.push('Vous avez trouver le bon nombre! Félicitation!');
-      found = false;
+      found = true;
       lastPlayer = "";
       
       if(score[message.author.id] === undefined)
