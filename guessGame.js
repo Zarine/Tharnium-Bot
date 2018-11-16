@@ -1,5 +1,6 @@
 var CurrentNumber = 0;
 var found = true;
+var lastPlayer = "";
 
 var score = {};
 
@@ -14,7 +15,7 @@ module.exports = {
     
     var response = [];
     response.push('<@' + message.author.id + '>, ');
-    if(found = true)
+    if(found === true)
     {
       response.push('une nouvelle partie est lancée! Il faut trouver le nombre entre 1 et 1000\n');
       found = false;
