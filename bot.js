@@ -28,6 +28,13 @@ bot.on('ready', function (evt) {
   logger.info('Connected');
   logger.info('Logged in as: ');
   logger.info(bot.user.username + "-" + bot.user.id);
+  
+  var state = {};
+  state.status = "online";
+  state.activity = {};
+  state.activity.name = "aide: ?command";
+  state.activity.type = "playing";
+  bot.setStatus(state);
 });
 
 bot.on("guildMemberAdd", member =>   

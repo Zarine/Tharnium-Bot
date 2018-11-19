@@ -4,6 +4,7 @@
     { "name":"time", "description":"Permet de savoir depuis quand vous êtes sur le serveur." },
     { "name":"rocki", "description":"Permet de faire apparaître une loli sélectionnée par Le Rocki." },
     { "name":"panna", "description":"Permet de demander à Pannaistes de travailler. Au boulot!" },
+    { "name":"devine", "description":"Lance un jeu de recherche du bon nombre entre 1 et 1000. un autre joueur doit jouer entre 2 de vos coups." },
     { "name":"tharn", "description":"Permet de tester quelques rôles (modo, admin...) - Plus un outil pour Zarine qu'autre chose." }
   ]
 }
