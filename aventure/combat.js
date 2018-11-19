@@ -95,10 +95,25 @@ module.exports = {
     var monster = character.firstMonster;    
     if(monster.endurance < 1)
     {
-      message.channel.send('<@' + message.author.id + ">, Vous avez tué le monstre: " + monster.name);
-      character.combat = false;
-      character.hit = 0;
-      return false;
+      var result = [];
+      result.push('<@' + message.author.id + ">, Vous avez tué le monstre: " + monster.name);
+      
+      if(character.secondMonster !== undefined)
+      {
+        character.firstMonster = character.secondMonster;
+        character.secondMonster = character.thirdMonster;
+        character.thirdMonster = undefined;
+        character.hit = 0;
+        result.push("Au tour du monstre suivant: " + character.firstMonster.name);
+        message.channel.send(result.join('\n'));
+      }
+      else
+      {
+        character.combat = false;
+        character.hit = 0;
+        message.channel.send(result.join('\n'));
+        return false;
+      }
     }
     
     return true;
