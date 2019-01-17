@@ -1,6 +1,6 @@
 ﻿var fs = require('fs');
 var logger = require('winston');
-var config = require('./conf.json');
+var config = require('./conf/conf.json');
 
 var loliFile = config.baseLocation + 'loli.json';
 

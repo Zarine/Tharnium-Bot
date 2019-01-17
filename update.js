@@ -1,6 +1,6 @@
 var logger = require('winston');
 
-var config = require('./conf.json');
+var config = require('./conf/conf.json');
 var utils = require('./utils');
 
 function checkModoOrZarine(member)
