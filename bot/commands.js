@@ -1,13 +1,13 @@
 var logger = require('winston');
 
-var config = require('../conf.json');
-var des = require('../des');
-var divers = require('../divers');
-var update = require('../update');
-var note = require('../note');
-var jdr = require('../jdr');
-var commandHelp = require('../commandHelp');
-var guessGame = require('../guessGame');
+var config = require('./../conf.json');
+var des = require('./../des');
+var divers = require('./../divers');
+var update = require('./../update');
+var note = require('./../note');
+var jdr = require('./../jdr');
+var commandHelp = require('./../commandHelp');
+var guessGame = require('./../guessGame');
 
 module.exports = {
   handleCommand: function(message)
