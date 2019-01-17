@@ -2,7 +2,7 @@ var Discord = require('discord.js');
 var logger = require('winston');
 var fs = require('fs');
 
-var commands = require('./bot/commands');
+var commands = require('./commands');
 var config = require('./conf.json');
 var des = require('./des');
 var update = require('./update');
