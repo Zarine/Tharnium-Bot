@@ -35,7 +35,7 @@ bot.on('ready', function (evt) {
   state.activity = {};
   state.activity.name = "aide: ?command";
   state.activity.type = "playing";
-  bot.setStatus(state);
+  //bot.setStatus(state);
 });
 
 bot.on("guildMemberAdd", member =>   
