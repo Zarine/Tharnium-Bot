@@ -3,7 +3,7 @@ var logger = require('winston');
 var fs = require('fs');
 
 var commands = require('./bot/commands');
-var config = require('./conf/conf.json');
+var config = require('./conf.json');
 var des = require('./des');
 var update = require('./update');
 var utils = require('./utils');
