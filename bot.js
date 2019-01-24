@@ -69,3 +69,10 @@ bot.on('message', (message) =>
 });
 
 bot.login(process.env.auth);
+
+working: function()
+{
+  logger.info("Yes, I am working");
+}
+
+setInterval(working, 60000);
