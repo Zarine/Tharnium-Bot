@@ -70,7 +70,7 @@ bot.on('message', (message) =>
 
 bot.login(process.env.auth);
 
-working: function()
+function working()
 {
   logger.info("Yes, I am working");
 }
