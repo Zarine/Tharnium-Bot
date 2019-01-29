@@ -77,7 +77,7 @@ function working()
   request = client.request();
   request.on('response', function( res ) {
     logger.info("Call to self done");
-  }
+  });
 }
 
 setInterval(working, 300000);
