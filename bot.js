@@ -1,6 +1,7 @@
 var Discord = require('discord.js');
 var logger = require('winston');
 var fs = require('fs');
+var http = require('http');
 
 var commands = require('./commands');
 var config = require('./conf.json');
@@ -72,7 +73,11 @@ bot.login(process.env.auth);
 
 function working()
 {
-  logger.info("Yes, I am working");
+  var client = http.createClient(80, "https://tharnium.herokuapp.com/");
+  request = client.request();
+  request.on('response', function( res ) {
+    logger.info("Call to self done");
+  }
 }
 
-setInterval(working, 60000);
+setInterval(working, 300000);
