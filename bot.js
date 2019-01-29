@@ -73,9 +73,9 @@ bot.login(process.env.auth);
 
 function working()
 {
-  http.get('http://nodejs.org/dist/index.json', (res) => {
+  http.get('https://tharnium.herokuapp.com/', (res) => {
     logger.info("Call to self done");
   });
 }
 
-setInterval(working, 60000);
+setInterval(working, 300000);
