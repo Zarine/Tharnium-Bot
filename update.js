@@ -93,7 +93,6 @@ module.exports = {
       message.channel.send("Vous n'utiliserez pas CA !");
       return;
     }
-    guild.members
     
     message.guild.members.cache.forEach(function(member) {
       setNouveauRole(member, args, result);
