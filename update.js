@@ -6,7 +6,7 @@ var utils = require('./utils');
 function checkModoOrZarine(member)
 {
   var result = false;
-  member.roles.forEach(function(ownedRole) {
+  member.roles.cache.forEach(function(ownedRole) {
     if(ownedRole.name === 'Zarine' || ownedRole.name === 'Modo') { result = true; }
   });
   return result;
