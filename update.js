@@ -94,9 +94,9 @@ module.exports = {
       return;
     }
     
-    message.guild.members.fetch().then( guild => {
+    message.guild.members.fetch().then( people => {
       var result = [];
-      guild.members.forEach(function(member) {
+      people.forEach(function(member) {
         setNouveauRole(member, args, result);
         upgradeNouveau(member, args, result);
       });
@@ -118,8 +118,8 @@ module.exports = {
     }
     
     var result = { 'nouveauUser': [], 'upgradeUser': [], 'missingRole': []};
-    message.guild.members.fetch().then( guild => {
-      guild.members.forEach(function(member) {
+    message.guild.members.fetch().then( people => {
+      people.forEach(function(member) {
         checkNouveauRole(member, args, result);
       });
       
