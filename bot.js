@@ -30,12 +30,10 @@ logger.add(new logger.transports.Console, {
 logger.level = 'debug';
 
 // Initialize Discord Bot
-var bot = new Discord.Client({ ws: { intents: ['GUILD_PRESENCES', 'GUILD_MEMBERS'] }});
+var bot = new Discord.Client();
 
 bot.on('ready', function (evt) {
-  logger.info('Connected');
-  logger.info('Logged in as: ');
-  logger.info(bot.user.username + "-" + bot.user.id);
+  logger.info('Connected - Logged in as: ' + bot.user.username + "-" + bot.user.id);
   
   var state = {};
   state.status = "online";
