@@ -94,6 +94,8 @@ module.exports = {
       return;
     }
     
+    var result = [];
+    
     message.guild.members.cache.forEach(function(member) {
       setNouveauRole(member, args, result);
       upgradeNouveau(member, args, result);
