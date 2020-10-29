@@ -48,7 +48,7 @@ bot.on("guildMemberAdd", member =>
   logger.info("Nouveau user : " + member.user.username);
   
   const guild = member.guild;
-  guild.channels.get(config.welcomeChannelId).send("Bienvenue au nouveau membre de la communauté : " + member.user);
+  guild.channels.cache.get(config.welcomeChannelId).send("Bienvenue au nouveau membre de la communauté : " + member.user);
   
   var roleToAdd = utils.getRole(guild, 'Nouveau');
   logger.info("Adding role : " + roleToAdd + " which is " + roleToAdd.name + " to member : " + member.user.username);
