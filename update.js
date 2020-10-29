@@ -16,7 +16,7 @@ function setNouveauRole(member, args, result)
 {
   var mustUpdate = true;
   const guild = member.guild;
-  member.roles.forEach(function(ownedRole) {
+  member.roles.cache.forEach(function(ownedRole) {
     if(ownedRole.name === config.usualRoleName || ownedRole.name === config.nouveauRoleName) { mustUpdate = false; }
   });
   
@@ -24,7 +24,7 @@ function setNouveauRole(member, args, result)
   {
     var roleToAdd = utils.getRole(guild, config.nouveauRoleName);
     logger.info("Adding role : " + roleToAdd + " which is " + roleToAdd.name + " to member : " + member.user.username);
-    member.addRole(roleToAdd).then( () => { upgradeNouveau(member, args, result); } ).catch(console.error);
+    member.roles.add(roleToAdd).then( () => { upgradeNouveau(member, args, result); } ).catch(console.error);
     result.push(member.user.username + " n'avait pas de role. Le bon role lui a été donné !");
     
   }
@@ -40,10 +40,10 @@ function checkJoinDateLimit(member)
 function nouveauToCompagnon(guild, member, result)
 {
   var compagnon = utils.getRole(guild, config.usualRoleName);
-  member.addRole(compagnon).catch(console.error);
+  member.roles.add(compagnon).catch(console.error);
   
   var nouveau = utils.getRole(guild, config.nouveauRoleName);
-  member.removeRole(nouveau).catch(console.error);
+  member.roles.remove(nouveau).catch(console.error);
   
   result.push(member.user.username + " vient de passer " + config.usualRoleName + " !");
 }
@@ -51,7 +51,7 @@ function nouveauToCompagnon(guild, member, result)
 function upgradeNouveau(member, args, result)
 {
   const guild = member.guild;
-  member.roles.forEach(function(ownedRole) {
+  member.roles.cache.forEach(function(ownedRole) {
     if(ownedRole.name === config.nouveauRoleName) 
     {
       if(!checkJoinDateLimit(member)) { logger.info(member.user.username + " est trop jeune sur le serveur pour un changement de role"); }
@@ -63,7 +63,7 @@ function upgradeNouveau(member, args, result)
 function checkNouveauRole(member, args, result)
 {
   var hasRole = false;
-  member.roles.forEach(function(ownedRole) {
+  member.roles.cache.forEach(function(ownedRole) {
     
     if(ownedRole.name === config.nouveauRoleName) 
     {
@@ -94,7 +94,7 @@ module.exports = {
       return;
     }
     
-    message.guild.fetchMembers().then( guild => {
+    message.guild.members.fetch().then( guild => {
       var result = [];
       guild.members.forEach(function(member) {
         setNouveauRole(member, args, result);
@@ -118,7 +118,7 @@ module.exports = {
     }
     
     var result = { 'nouveauUser': [], 'upgradeUser': [], 'missingRole': []};
-    message.guild.fetchMembers().then( guild => {
+    message.guild.members.fetch().then( guild => {
       guild.members.forEach(function(member) {
         checkNouveauRole(member, args, result);
       });
