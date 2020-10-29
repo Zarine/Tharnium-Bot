@@ -44,7 +44,7 @@ module.exports = {
           divers.testMainRole(message);
           break;
         case 'panna':
-          message.channel.send('Pannaistes retourne bosser ! https://gph.is/1Fbp1e6');
+          message.channel.send('Pannaistes retourne bosser ! https://media1.giphy.com/media/jqfkQJr35LBYZdHDXH/giphy.gif');
           break;
         case 'rocki':
           divers.loliFromRocki(message);
