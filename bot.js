@@ -30,7 +30,7 @@ logger.add(new logger.transports.Console, {
 logger.level = 'debug';
 
 // Initialize Discord Bot
-var bot = new Discord.Client();
+var bot = new Discord.Client({ ws: { intents: ['GUILD_PRESENCES', 'GUILD_MEMBERS'] }});
 
 bot.on('ready', function (evt) {
   logger.info('Connected');
