@@ -52,7 +52,7 @@ bot.on("guildMemberAdd", member =>
   
   var roleToAdd = utils.getRole(guild, 'Nouveau');
   logger.info("Adding role : " + roleToAdd + " which is " + roleToAdd.name + " to member : " + member.user.username);
-  member.addRole(roleToAdd).catch(console.error);
+  member.roles.add(roleToAdd).catch(console.error);
 });
 
 bot.on('message', (message) =>
