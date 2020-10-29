@@ -94,21 +94,21 @@ module.exports = {
       return;
     }
     
-    var result = [];
-    
-    message.guild.members.cache.forEach(function(member) {
-      setNouveauRole(member, args, result);
-      upgradeNouveau(member, args, result);
+    message.guild.members.fetch().then( people => {
+      var result = [];
+      people.forEach(function(member) {
+        setNouveauRole(member, args, result);
+        upgradeNouveau(member, args, result);
+      });
+      if(result.length !== 0) 
+      {
+        message.channel.send(result.join("\n"));
+      }
+      else 
+      {
+        message.channel.send("Rien a faire !");
+      }
     });
-    if(result.length !== 0) 
-    {
-      message.channel.send(result.join("\n"));
-    }
-    else 
-    {
-      message.channel.send("Rien a faire !");
-    }
-
   },
   
   checkUpdate: function(message, args) {
@@ -118,30 +118,32 @@ module.exports = {
     }
     
     var result = { 'nouveauUser': [], 'upgradeUser': [], 'missingRole': []};
-    message.guild.members.cache.forEach(function(member) {
-      checkNouveauRole(member, args, result);
-    });
+    message.guild.members.fetch().then( people => {
+      people.forEach(function(member) {
+        checkNouveauRole(member, args, result);
+      });
       
-    if(result.nouveauUser.length === 0 && result.missingRole.length === 0) 
-    {
-      message.channel.send("Aucune update a faire : tout est bon !");
-    }
+      if(result.nouveauUser.length === 0 && result.missingRole.length === 0) 
+      {
+        message.channel.send("Aucune update a faire : tout est bon !");
+      }
       
-    var messageToSend = "";
-    if(result.nouveauUser.length !== 0)
-    {
-      messageToSend = "Il y a actuellement les Nouveaux suivant : \n" + result.nouveauUser.join("\n") + "\n Ca fait " + result.nouveauUser.length + " " + config.nouveauRoleName + "\n";
+      var messageToSend = "";
+      if(result.nouveauUser.length !== 0)
+      {
+        messageToSend = "Il y a actuellement les Nouveaux suivant : \n" + result.nouveauUser.join("\n") + "\n Ca fait " + result.nouveauUser.length + " " + config.nouveauRoleName + "\n";
         
-    }
-    if(result.upgradeUser.length !== 0)
-    {
-      messageToSend += "Les utilisateurs suivant peuvent passer automatiquement " + config.usualRoleName + ":\n" + result.upgradeUser.join("\n") + "\n";
-    }
-    if(result.missingRole.length !== 0)
-    {
-      messageToSend += "Les utilisateurs ne sont ni " + config.nouveauRoleName + " ni " + config.usualRoleName + ":\n" + result.missingRole.join("\n");
-    }
-    message.channel.send(messageToSend);
+      }
+      if(result.upgradeUser.length !== 0)
+      {
+        messageToSend += "Les utilisateurs suivant peuvent passer automatiquement " + config.usualRoleName + ":\n" + result.upgradeUser.join("\n") + "\n";
+      }
+      if(result.missingRole.length !== 0)
+      {
+        messageToSend += "Les utilisateurs ne sont ni " + config.nouveauRoleName + " ni " + config.usualRoleName + ":\n" + result.missingRole.join("\n");
+      }
+      message.channel.send(messageToSend);
+    });
   },
   
   time: function(message) {
