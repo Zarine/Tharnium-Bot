@@ -46,6 +46,9 @@ module.exports = {
         case 'panna':
           message.channel.send('Pannaistes retourne bosser ! https://media4.giphy.com/media/j4LYyhtYVh8Q/giphy.gif');
           break;
+        case 'pana':
+          message.channel.send('Panadrame retourne bosser ! https://media4.giphy.com/media/j4LYyhtYVh8Q/giphy.gif');
+          break;
         case 'rocki':
           divers.loliFromRocki(message);
           break;
