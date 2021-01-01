@@ -6,6 +6,7 @@
   "planningMessageId": "504767553059553301",
   "nouveauRoleName": "Nouveau",
   "usualRoleName": "Compagnon",
+  "notifRoleName": "Notif",
   "dayForUsual": 3,
   "baseLocation": "/data/"
 }
