@@ -46,7 +46,7 @@ module.exports = {
         case 'notif':
           update.addNotif(message, args);
           break;
-        case 'stopNotif':
+        case 'stopnotif':
           update.removeNotif(message, args);
           break;
         case 'panna':
