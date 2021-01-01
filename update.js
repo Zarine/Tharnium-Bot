@@ -91,9 +91,9 @@ module.exports = {
 
   addNotif: function (message, args) {
     var notif = utils.getRole(message.guild, config.notifRoleName);
-    member.roles.add(notif).catch(console.error);
+    message.member.roles.add(notif).catch(console.error);
   
-    message.channel.send(member.user.username + " - notification ajoutée !");
+    message.channel.send(message.member.user.username + " - notification ajoutée !");
   },
 
   removeNotif: function (message, args) {
