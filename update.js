@@ -37,22 +37,6 @@ function checkJoinDateLimit(member)
   return true;
 }
 
-function addNotif(guild, member, result)
-{
-  var notif = utils.getRole(guild, config.notifRoleName);
-  member.roles.add(notif).catch(console.error);
-  
-  result.push(member.user.username + " - notification ajoutée !");
-}
-
-function removeNotif(guild, member, result)
-{
-  var notif = utils.getRole(guild, config.notifRoleName);
-  member.roles.remove(notif).catch(console.error);
-  
-  result.push(member.user.username + " - notification retirée !");
-}
-
 function nouveauToCompagnon(guild, member, result)
 {
   var compagnon = utils.getRole(guild, config.usualRoleName);
@@ -104,6 +88,21 @@ function checkNouveauRole(member, args, result)
 }
 
 module.exports = {
+
+  addNotif: function (message, args) {
+    var notif = utils.getRole(message.guild, config.notifRoleName);
+    member.roles.add(notif).catch(console.error);
+  
+    message.channel.send(member.user.username + " - notification ajoutée !");
+  },
+
+  removeNotif: function (message, args) {
+    var notif = utils.getRole(message.guild, config.notifRoleName);
+    message.member.roles.remove(notif).catch(console.error);
+  
+    message.channel.send(message.member.user.username + " - notification retirée !");
+  },
+  
   update: function(message, args) {
     if(!checkModoOrZarine(message.member)) {
       message.channel.send("Vous n'utiliserez pas CA !");
