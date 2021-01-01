@@ -43,6 +43,12 @@ module.exports = {
         case 'tharn':
           divers.testMainRole(message);
           break;
+        case 'notif':
+          divers.testMainRole(message);
+          break;
+        case 'stopNotif':
+          divers.testMainRole(message);
+          break;
         case 'panna':
           message.channel.send('Pannaistes retourne bosser ! https://media4.giphy.com/media/j4LYyhtYVh8Q/giphy.gif');
           break;
