@@ -37,6 +37,22 @@ function checkJoinDateLimit(member)
   return true;
 }
 
+function addNotif(guild, member, result)
+{
+  var notif = utils.getRole(guild, config.notifRoleName);
+  member.roles.add(notif).catch(console.error);
+  
+  result.push(member.user.username + " - notification ajoutée !");
+}
+
+function removeNotif(guild, member, result)
+{
+  var notif = utils.getRole(guild, config.notifRoleName);
+  member.roles.remove(notif).catch(console.error);
+  
+  result.push(member.user.username + " - notification retirée !");
+}
+
 function nouveauToCompagnon(guild, member, result)
 {
   var compagnon = utils.getRole(guild, config.usualRoleName);
