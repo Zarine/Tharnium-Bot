@@ -44,10 +44,10 @@ module.exports = {
           divers.testMainRole(message);
           break;
         case 'notif':
-          divers.testMainRole(message);
+          update.addNotif(message, args);
           break;
         case 'stopNotif':
-          divers.testMainRole(message);
+          update.removeNotif(message, args);
           break;
         case 'panna':
           message.channel.send('Pannaistes retourne bosser ! https://media4.giphy.com/media/j4LYyhtYVh8Q/giphy.gif');
