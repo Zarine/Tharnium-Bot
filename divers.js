@@ -77,7 +77,13 @@ module.exports = {
   },
   
   rollGiveAway: function(message, args) {
-    if(message.member.roles.find("name", "Zarine"))
+    
+    var allowed = false;
+    member.roles.cache.forEach(function(ownedRole) {
+      if(ownedRole.name === 'Zarine') { allowed = true; }
+    });
+    
+    if(allowed)
     {
       var giveAwayMessageId = args[0];
       if(giveAwayMessageId !== undefined)
