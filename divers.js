@@ -79,7 +79,7 @@ module.exports = {
   rollGiveAway: function(message, args) {
     
     var allowed = false;
-    member.roles.cache.forEach(function(ownedRole) {
+    message.member.roles.cache.forEach(function(ownedRole) {
       if(ownedRole.name === 'Zarine') { allowed = true; }
     });
     
