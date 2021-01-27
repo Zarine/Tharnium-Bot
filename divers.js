@@ -29,6 +29,17 @@ function addLoliToFile(message, args)
   });
 }
 
+function unique(arr) {
+    var u = {}, a = [];
+    for(var i = 0, l = arr.length; i < l; ++i){
+        if(!u.hasOwnProperty(arr[i])) {
+            a.push(arr[i]);
+            u[arr[i]] = 1;
+        }
+    }
+    return a;
+}
+
 function readLoli(message)
 {
   fs.readFile(loliFile, 'utf8', function(err, data) {  
@@ -62,6 +73,41 @@ module.exports = {
     else
     {
       message.channel.send('Tu crois quoi mon petit ?');
+    }
+  },
+  
+  rollGiveAway: function(message, args) {
+    if(message.member.roles.find("name", "Zarine"))
+    {
+      var giveAwayMessageId = args[0];
+      if(giveAwayMessageId !== undefined)
+      {
+        message.guild.channels.get('298328195172663297').fetchMessage(giveAwayMessageId)
+        .then(giveAwayMessage => {
+
+          var reactionList = [];
+          giveAwayMessage.reactions.forEach(function(reaction) {
+            reactionList.push(reaction);
+          });
+            
+          for(var i = 0; i < reactionList.length; i++)
+          {
+            var currentReaction = reactionList[i];
+            var userList = currentReaction.users;
+            
+            for(var j = 0; j < userList.length; j++)
+            {
+              userList.append(userList[j]);
+            }
+            var filteredList = unique(userList);
+            
+            var winner = Math.floor(Math.random() * filteredList.length);
+            
+            var result = 'Le gagnant est: <@' + winner.id + '>';
+            message.channel.send(result);
+          }
+        });
+      }
     }
   },
   

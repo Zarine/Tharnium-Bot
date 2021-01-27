@@ -43,6 +43,9 @@ module.exports = {
         case 'tharn':
           divers.testMainRole(message);
           break;
+        case 'roll':
+          divers.rollGiveAway(message, args);
+          break;
         case 'notif':
           update.addNotif(message, args);
           break;
