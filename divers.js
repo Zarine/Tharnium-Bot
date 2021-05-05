@@ -90,22 +90,13 @@ module.exports = {
       {
         message.guild.channels.cache.get('298328195172663297').messages.fetch(giveAwayMessageId)
         .then(giveAwayMessage => {
+			var currentReaction = giveAwayMessage.reactions.cache[0];
 
-          var reactionList = [];
-          giveAwayMessage.reactions.cache.forEach(function(reaction) {
-            reactionList.push(reaction);
-          });
-            
-          for(var i = 0; i < reactionList.length; i++)
-          {
-            var currentReaction = reactionList[i];
-
-            var userList = []
+			var userList = []
 			currentReaction.users.fetch()
 			.then(users => {
 				users.forEach((value,key)=>{
 				  userList.push(value);
-				  console.log(value);
 				})
 				
 				var filteredList = unique(userList);
@@ -114,7 +105,6 @@ module.exports = {
 				var result = 'Le gagnant est: <@' + winner.id + '>';
 				message.channel.send(result);
 			});
-          }
         });
       }
     }
