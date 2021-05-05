@@ -99,8 +99,8 @@ module.exports = {
           for(var i = 0; i < reactionList.length; i++)
           {
             var currentReaction = reactionList[i];
+			console.log(currentReaction);
             var userList = currentReaction.users.cache;
-			console.log("user total of " + userList.cache.length);
             
             for(var j = 0; j < userList.length; j++)
             {
