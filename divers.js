@@ -94,7 +94,9 @@ module.exports = {
           var reactionList = [];
           giveAwayMessage.reactions.cache.forEach(function(reaction) {
             reactionList.push(reaction);
+			console.log("we have 1 reaction");
           });
+		  console.log("a full total of " + reactionList.length);
             
           for(var i = 0; i < reactionList.length; i++)
           {
