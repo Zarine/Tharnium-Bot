@@ -88,7 +88,7 @@ module.exports = {
       var giveAwayMessageId = args[0];
       if(giveAwayMessageId !== undefined)
       {
-        message.guild.channels.cache.get('298328195172663297').fetchMessage(giveAwayMessageId)
+        message.guild.channels.cache.get('298328195172663297').messages.fetch(giveAwayMessageId)
         .then(giveAwayMessage => {
 
           var reactionList = [];
