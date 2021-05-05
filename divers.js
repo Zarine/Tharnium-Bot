@@ -104,7 +104,7 @@ module.exports = {
 			currentReaction.users.fetch()
 			.then(users => {
 				users.forEach((value,key)=>{
-				  userList.append(value);
+				  userList.push(value);
 				})
 			});
             
