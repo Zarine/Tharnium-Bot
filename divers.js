@@ -100,13 +100,17 @@ module.exports = {
           {
             var currentReaction = reactionList[i];
 			console.log(currentReaction);
-            var userList = currentReaction.users.cache;
+            var userList = []
+			currentReaction.users.fetch()
+			.then(users => {
+				for(var j = 0; j < users.length; j++)
+				{
+				  userList.append(users[j]);
+				  console.log("adding user " + users[j].id);
+				}
+			};
             
-            for(var j = 0; j < userList.length; j++)
-            {
-              userList.append(userList[j]);
-			  console.log("adding user " + userList[j].id);
-            }
+
             var filteredList = unique(userList);
             
             var winner = filteredList[Math.floor(Math.random() * filteredList.length)];
