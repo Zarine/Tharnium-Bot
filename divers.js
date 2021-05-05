@@ -99,18 +99,21 @@ module.exports = {
           for(var i = 0; i < reactionList.length; i++)
           {
             var currentReaction = reactionList[i];
-			console.log(currentReaction);
+
             var userList = []
 			currentReaction.users.fetch()
 			.then(users => {
 				users.forEach((value,key)=>{
 				  userList.push(value);
+				  console.log(value);
 				})
 			});
             
             var filteredList = unique(userList);
-            
+            console.log(filteredList.length);
             var winner = filteredList[Math.floor(Math.random() * filteredList.length)];
+			console.log("------------------------");
+			console.log(winner);
             
             var result = 'Le gagnant est: <@' + winner.id + '>';
             message.channel.send(result);
