@@ -103,15 +103,11 @@ module.exports = {
             var userList = []
 			currentReaction.users.fetch()
 			.then(users => {
-				console.log("we have users: " + users.length);
-				console.log(users);
-				for(var j = 0; j < users.length; j++)
-				{
-				  userList.append(users[j]);
-				}
+				users.forEach((value,key)=>{
+				  userList.append(values);
+				})
 			});
             
-
             var filteredList = unique(userList);
             
             var winner = filteredList[Math.floor(Math.random() * filteredList.length)];
