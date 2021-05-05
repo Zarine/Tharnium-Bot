@@ -92,7 +92,7 @@ module.exports = {
         .then(giveAwayMessage => {
 
           var reactionList = [];
-          giveAwayMessage.reactions.forEach(function(reaction) {
+          giveAwayMessage.reactions.cache.forEach(function(reaction) {
             reactionList.push(reaction);
           });
             
