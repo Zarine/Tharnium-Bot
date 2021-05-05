@@ -90,7 +90,7 @@ module.exports = {
       {
         message.guild.channels.cache.get('298328195172663297').messages.fetch(giveAwayMessageId)
         .then(giveAwayMessage => {
-			var currentReaction = giveAwayMessage.reactions.cache[0];
+			var currentReaction = giveAwayMessage.reactions.cache.first();
 
 			var userList = []
 			currentReaction.users.fetch()
