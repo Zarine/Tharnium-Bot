@@ -107,16 +107,13 @@ module.exports = {
 				  userList.push(value);
 				  console.log(value);
 				})
+				
+				var filteredList = unique(userList);
+				
+				var winner = filteredList[Math.floor(Math.random() * filteredList.length)];
+				var result = 'Le gagnant est: <@' + winner.id + '>';
+				message.channel.send(result);
 			});
-            
-            var filteredList = unique(userList);
-            console.log(filteredList.length);
-            var winner = filteredList[Math.floor(Math.random() * filteredList.length)];
-			console.log("------------------------");
-			console.log(winner);
-            
-            var result = 'Le gagnant est: <@' + winner.id + '>';
-            message.channel.send(result);
           }
         });
       }
