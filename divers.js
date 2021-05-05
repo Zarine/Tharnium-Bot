@@ -103,10 +103,11 @@ module.exports = {
             var userList = []
 			currentReaction.users.fetch()
 			.then(users => {
+				console.log("we have users: " + users.length);
+				console.log(users);
 				for(var j = 0; j < users.length; j++)
 				{
 				  userList.append(users[j]);
-				  console.log("adding user " + users[j].id);
 				}
 			});
             
