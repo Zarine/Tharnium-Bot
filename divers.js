@@ -108,7 +108,7 @@ module.exports = {
 				  userList.append(users[j]);
 				  console.log("adding user " + users[j].id);
 				}
-			};
+			});
             
 
             var filteredList = unique(userList);
