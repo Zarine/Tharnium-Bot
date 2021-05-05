@@ -9,8 +9,6 @@ var des = require('./des');
 var update = require('./update');
 var utils = require('./utils');
 var divers = require('./divers');
-var note = require('./note');
-var jdr = require('./jdr');
 var commandHelp = require('./commandHelp');
 var guessGame = require('./guessGame');
 
