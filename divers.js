@@ -94,22 +94,22 @@ module.exports = {
           var reactionList = [];
           giveAwayMessage.reactions.cache.forEach(function(reaction) {
             reactionList.push(reaction);
-			console.log("we have 1 reaction");
           });
-		  console.log("a full total of " + reactionList.length);
             
           for(var i = 0; i < reactionList.length; i++)
           {
             var currentReaction = reactionList[i];
             var userList = currentReaction.users;
+			console.log("user total of " + userList.length);
             
             for(var j = 0; j < userList.length; j++)
             {
               userList.append(userList[j]);
+			  console.log("adding user " + userList[j].id);
             }
             var filteredList = unique(userList);
             
-            var winner = Math.floor(Math.random() * filteredList.length);
+            var winner = filteredList[Math.floor(Math.random() * filteredList.length)];
             
             var result = 'Le gagnant est: <@' + winner.id + '>';
             message.channel.send(result);
